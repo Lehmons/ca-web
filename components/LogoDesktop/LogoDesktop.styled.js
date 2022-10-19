@@ -11,6 +11,9 @@ const LogoDesktopStyles = styled(motion.section)`
   width: 100%;
   height: 100vh;
   background: white;
+  ${media.tabletPortraitAndBelow`
+      display: none;
+    `}
 
   h1 {
     position: absolute;

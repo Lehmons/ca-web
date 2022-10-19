@@ -15,7 +15,7 @@ export default function LogoMobile() {
         delay: 1,
       }}
     >
-      <h1>Logo will go here</h1>
+      <h1>Mobile Logo will go here</h1>
     </LogoMobileStyles>
   );
 }
