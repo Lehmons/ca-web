@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HomeStyles from "./Home.styled";
 import LogoDesktop from "../LogoDesktop";
+import LogoMobile from "../LogoMobile";
 
 export default function Home({ pageStyle, pageVariants, pageTransition }) {
   return (
@@ -15,6 +16,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition }) {
       className="page home"
     >
       <LogoDesktop />
+      <LogoMobile />
     </HomeStyles>
   );
 }
