@@ -118,7 +118,7 @@ export default function ImageBlock({
             height: desktopDimensions?.height,
           })}
           loading={!noLazy ? "lazy" : ""}
-          alt={text || "Cap Awards"}
+          alt={text || "Commercial Artists"}
         />
       </picture>
     </section>

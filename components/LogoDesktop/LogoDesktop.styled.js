@@ -7,13 +7,13 @@ import { font, media, underline } from "../Styles";
 import { motion } from "framer-motion";
 
 const LogoDesktopStyles = styled(motion.section)`
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 100vh;
   background: white;
-  ${media.tabletPortraitAndBelow`
-      display: none;
-    `}
+	top: 0;
+	left: 0;
+	z-index: 2;
 
   h1 {
     position: absolute;

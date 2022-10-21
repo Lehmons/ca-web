@@ -9,7 +9,6 @@ module.exports = {
     NEXT_PUBLIC_SANITY_PROJECT_ID,
     NEXT_PUBLIC_SANITY_DATASET,
   },
-  dimensions: false,
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
       (rule) => rule.test && rule.test.test(".svg")

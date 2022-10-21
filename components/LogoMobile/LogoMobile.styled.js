@@ -11,10 +11,9 @@ const LogoMobileStyles = styled(motion.section)`
   width: 100%;
   height: 100vh;
   background: white;
-  display: none;
-  ${media.tabletPortraitAndBelow`
-    display: fixed;
-  `}
+	top: 0;
+	left: 0;
+	z-index: 2;
 
   h1 {
     position: absolute;

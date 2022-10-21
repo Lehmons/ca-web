@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PortfolioStyles from "./Portfolio.styled";
+import MuxPlayer from '@mux/mux-player-react';
 
-export default function Portfolio({ pageStyle, pageVariants, pageTransition }) {
+export default function Portfolio({ pageStyle, pageVariants, pageTransition, portfolio, video, password }) {
   return (
     <PortfolioStyles
       key="#portfolio"
@@ -13,7 +14,10 @@ export default function Portfolio({ pageStyle, pageVariants, pageTransition }) {
       transition={pageTransition}
       className="page portfolio"
     >
-      <h1>PORTFOLIO!!!!!</h1>
+			<section>
+				{video && (<MuxPlayer playbackId={video?.asset?.playbackId} metadata={{video_title: 'showreel', video_id: video?.asset?.data?.id}} streamType="on-demand"/>)}
+				{portfolio && (<a href={`${portfolio?.asset?.url}`} download>Download PDF</a>)}
+			</section>
     </PortfolioStyles>
   );
 }

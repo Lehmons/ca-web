@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/images/apple-touch-icon.png"
@@ -28,14 +28,7 @@ export default function Document() {
           color="#5bbad5"
         />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" /> */}
-        {/* <link
-          rel="preload"
-          href="/fonts/bradford-light.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="true"
-        /> */}
+        <meta name="theme-color" content="#ffffff" /> 
         <meta property="og:locale" content="en_GB" />
         <meta property="og:title" content="Commercial Artists" />
         <meta property="og:description" content="Commercial Artists" />
@@ -45,15 +38,6 @@ export default function Document() {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:description" content="Commercial Artists" />
         <meta name="twitter:title" content="Commercial Artists" />
-        {/* <meta property="og:video" content="/videos/social-share.mp4" />
-        <meta property="og:video" content="/videos/social-share.mp4" />
-        <meta
-          property="og:video:secure_url"
-          content="/videos/social-share.mp4"
-        />
-        <meta property="og:video:type" content="video/mp4" />
-        <meta property="og:video:width" content="1920" />
-        <meta property="og:video:height" content="1080" /> */}
       </Head>
       <body>
         <Main />

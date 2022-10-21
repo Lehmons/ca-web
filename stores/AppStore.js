@@ -2,6 +2,7 @@ import Store from ".";
 
 const initialState = {
   hasLoggedIn: false,
+  activeIndex: 0,
 };
 
 function useAppStore() {
@@ -12,11 +13,18 @@ function useAppStore() {
       draft.hasLoggedIn = bool;
     });
   };
+  
+	const setActiveIndex = i => {
+    setState((draft) => {
+      draft.activeIndex = i;
+    });
+  };
 
   return [
     state,
     {
       setHasLoggedIn,
+      setActiveIndex,
     },
   ];
 }

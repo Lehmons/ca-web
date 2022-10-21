@@ -81,6 +81,18 @@ const GlobalStyles = createGlobalStyle`
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	p, a {
+		font-size: var(--fontSizeLargeDesktop);
+		text-transform: uppercase;
+		letter-spacing: var(--letterSpacing);
+		${media.smallDesktopAndBelow`
+			font-size: var(--fontSizeDesktop);
+		`}
+		${media.tabletPortraitAndBelow`
+			font-size: var(--fontSizeMobile);
+		`}
+	}
 `;
 
 export default GlobalStyles;

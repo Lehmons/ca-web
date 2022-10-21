@@ -3,6 +3,7 @@ import { getClient } from "../../lib/sanity.server";
 import { groq } from "next-sanity";
 
 const query = groq`*[_type == "general"][0]{
+  fontSizeLargeDesktop,
   fontSizeDesktop,
   fontSizeMobile,
   letterSpacing,
@@ -18,6 +19,10 @@ export default function Settings() {
     document.documentElement.style.setProperty(
       "--backgroundColour",
       data?.backgroundColour?.hex
+    );
+    document.documentElement.style.setProperty(
+      "--fontSizeLargeDesktop",
+      data?.fontSizeLargeDesktop
     );
     document.documentElement.style.setProperty(
       "--fontSizeDesktop",
