@@ -15,7 +15,7 @@ export default function Portfolio({ pageStyle, pageVariants, pageTransition, por
       className="page portfolio"
     >
 			<section>
-				{video && (<MuxPlayer playbackId={video?.asset?.playbackId} metadata={{video_title: 'showreel', video_id: video?.asset?.data?.id}} streamType="on-demand"/>)}
+				{video && (<MuxPlayer playbackId={video?.asset?.playbackId} metadata={{video_title: 'showreel', video_id: video?.asset?.data?.id}}/>)}
 				{portfolio && (<a href={`${portfolio?.asset?.url}`} download>Download PDF</a>)}
 			</section>
     </PortfolioStyles>
