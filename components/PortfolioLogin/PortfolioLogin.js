@@ -11,7 +11,7 @@ export default function PortfolioLogin({ pageStyle, pageVariants, pageTransition
 	
 	const onInput = e => {
 		if(e?.target?.value === password){
-			setCookie(null, 'isLoggedIn', true, {
+			setCookie(null, 'hasLoggedIn', true, {
 				maxAge: 30 * 24 * 60 * 60,
 				path: '/',
 			});
