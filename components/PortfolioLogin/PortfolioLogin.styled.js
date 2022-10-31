@@ -4,56 +4,56 @@
 
 import styled from "styled-components";
 import { font, media, underline } from "../Styles";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const PortfolioLoginStyles = styled(motion.section)`
-	width: 100%;
-	height: 100vh;
-	background: var(--backgroundColour);
+  width: 100%;
+  height: 100vh;
+  background: var(--backgroundColour);
 
-	display: flex;
+  display: flex;
   & > section {
-		height: 100vh;
-		display: flex;
-		padding: 2rem;
-		align-items: center;
-		justify-content: flex-start;
-		${media.tabletPortraitAndBelow`
+    height: 100vh;
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    ${media.tabletPortraitAndBelow`
 			padding: 20px;
 		`}
-	}
+  }
 
-	& > section:nth-child(1){
-		width: 33.3%;
-	}
+  & > section:nth-child(1) {
+    width: 33.3%;
+  }
 
-	& > section:nth-child(2){
-		flex: 1;
-		background: white;
-	}
+  & > section:nth-child(2) {
+    flex: 1;
+    background: white;
+  }
 
-	h1,
-	input {
-		font-size: var(--fontSizeLargeDesktop);
-		text-transform: uppercase;
-		letter-spacing: var(--letterSpacing);
-		${media.smallDesktopAndBelow`
+  h1,
+  input {
+    font-size: var(--fontSizeLargeDesktop);
+    text-transform: uppercase;
+    letter-spacing: var(--letterSpacing);
+    ${media.smallDesktopAndBelow`
 			font-size: var(--fontSizeDesktop);
 		`}
-		${media.tabletPortraitAndBelow`
+    ${media.tabletPortraitAndBelow`
 			font-size: var(--fontSizeMobile);
 		`}
-	}
+  }
 
-	input{
-		width: 100%;
-		height: 100%;
-		border-bottom: initial !important;
-	}
+  input {
+    width: 100%;
+    height: 100%;
+    border-bottom: initial !important;
+  }
 
-	.label-title{
-		display: none !important;
-	}
+  .label-title {
+    display: none !important;
+  }
 `;
 
 export default PortfolioLoginStyles;
