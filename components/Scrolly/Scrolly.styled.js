@@ -28,7 +28,11 @@ const ScrollyStyles = styled.section`
 		`}
 	}
 
-	/* .one,
+	.four {
+		padding-bottom: 20rem;
+	}
+
+	.one,
 	.two,
 	.three {
 		position: sticky;
@@ -56,9 +60,9 @@ const ScrollyStyles = styled.section`
 			padding-bottom: 20px;
 			top: calc(50vh - 10px + 55px + 55px);
 		`}
-	} */
+	}
 
-	.four {
+	/* .four {
 		padding-top: 4rem;
 		${media.tabletLandscapeAndBelow`
 			padding-top: 40px;
@@ -66,7 +70,7 @@ const ScrollyStyles = styled.section`
 		${media.tabletPortraitAndBelow`
 			padding-top: 25px;
 		`}
-	}
+	} */
 
 
 	p {
