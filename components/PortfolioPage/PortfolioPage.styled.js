@@ -8,51 +8,40 @@ import { motion } from "framer-motion";
 
 const PortfolioPageStyles = styled(motion.section)`
   background: white;
-  width: 100%;
   height: 100%;
   min-height: 100vh;
-  display: flex;
   ${media.tabletPortraitAndBelow`
 	`}
 
+  section {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: white;
+    margin: auto;
+  }
+
   a {
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 1;
     width: 33.3%;
     color: black;
-    display: flex;
     text-align: center;
     background: var(--backgroundColour);
-    ${media.tabletPortraitAndBelow`
-		top: 0;
-		display: flex;
-    width: 100%;
-    height: 100%;
-    position: flex-start;
-	`}
   }
 
   mux-player {
+    display: flex;
     width: 66.7%;
+    padding: 6rem;
     max-height: calc(100% - 12rem);
     max-width: calc(100% - 12rem);
-    ${media.tabletLandscapeAndBelow`
-		display: flex;
-		`}
-  }
-
-  section {
-    direction: rtl;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    justify-content: space-between;
-    ${media.tabletLandscapeAndBelow`
-			display: flex;
-      flex-direction: column;
-      background: blue;
-		`}
+    background: white;
   }
 `;
 
