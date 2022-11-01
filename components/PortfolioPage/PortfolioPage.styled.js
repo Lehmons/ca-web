@@ -10,8 +10,6 @@ const PortfolioPageStyles = styled(motion.section)`
   background: white;
   height: 100%;
   min-height: 100vh;
-  ${media.tabletPortraitAndBelow`
-	`}
 
   section {
     display: flex;
@@ -22,9 +20,21 @@ const PortfolioPageStyles = styled(motion.section)`
     left: 0;
     background: white;
     margin: auto;
+    ${media.tabletPortraitAndBelow`
+    display: flex;
+    align-items: top;
+    justify-content: flex-end;
+      max-width: 100vw;
+			padding-left: 20px;
+			padding-right: 20px;
+`}
   }
 
   a {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+    display: flex;
     position: absolute;
     left: 0;
     height: 100%;
@@ -33,6 +43,10 @@ const PortfolioPageStyles = styled(motion.section)`
     color: black;
     text-align: center;
     background: var(--backgroundColour);
+    ${media.tabletPortraitAndBelow`
+			padding-left: 20px;
+			padding-right: 20px;
+`}
   }
 
   mux-player {
@@ -42,6 +56,12 @@ const PortfolioPageStyles = styled(motion.section)`
     max-height: calc(100% - 12rem);
     max-width: calc(100% - 12rem);
     background: white;
+    ${media.tabletPortraitAndBelow`
+			padding-left: 60px;
+			padding-right: 60px;
+      max-height: calc(100% - 120px);
+      max-width: calc(100% - 120px);
+`}
   }
 `;
 
