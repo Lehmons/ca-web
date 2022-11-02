@@ -20,7 +20,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 
 	const isMouseOutside = useMouseOutside();
 
-	const [{ }, { setActiveIndex }] = useAppStore();
+	const [{ activeIndex }, { setActiveIndex }] = useAppStore();
 
 	useEffect(()=> {
 		setTimeout(() => {

@@ -58,7 +58,9 @@ const MyApp = ({ Component, pageProps, router }) => {
   };
 
   const resetScrollPosition = () => {
-		window.scrollTo(0, 0);
+		setTimeout(() => {
+			window.scrollTo(0, 0);
+		}, 0);
   };
 
   const setiOSViewportHeight = () => {
