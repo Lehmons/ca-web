@@ -24,7 +24,6 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 
 	useEffect(()=> {
 		setTimeout(() => {
-			window.scrollTo(0, 0);
 			setActiveIndex(0);
 		}, 0);
 	}, []);

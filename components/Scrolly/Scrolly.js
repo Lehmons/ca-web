@@ -13,6 +13,7 @@ export default function Scrolly({ email, socialMedia}) {
 	const [ tops, setTops ] = useState();
 	const ref = useRef();
 	const marginSpace = 10;
+	const [{ }, { setActiveIndex }] = useAppStore();
 
 	const calculate = () => {
 		const sections = [...ref.current.querySelectorAll('.pseudo > section')];
@@ -58,14 +59,16 @@ export default function Scrolly({ email, socialMedia}) {
 	};
 
 	useEffect(()=> {
+		calculate();
 		window.requestAnimationFrame(()=> {
 			setTimeout(() => {
-				calculate();			
-			}, 500);
+				calculate();				
+			}, 1000);
 		});
 	}, [viewportW, viewportH]);
 
 	useEffect(()=> {
+		setActiveIndex(0);
 		setTimeout(() => {
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
 		}, 1300 + 2000);
@@ -83,10 +86,10 @@ export default function Scrolly({ email, socialMedia}) {
 			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
 				<p><span>is a multi-disciplinary<br/> london-based collective<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>
 			</ScrollElem>
-			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={40} i={2}>
+			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(40)} i={2}>
 				<p><span>We explore, question,<br/> collaborate and create.<br/></span><span>Using art direction, design and<br/> spatial forms to delier emotive<br/> concepts for a diverse audience.</span></p>
 			</ScrollElem>
-			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} topPos={tops?.[2] || null} heightOffset={73} i={3}>
+			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(73)} i={3}>
 					<p>Our experiences and communities<br/> define our way forward.</p>
 			</ScrollElem>
 			<Fourth >
