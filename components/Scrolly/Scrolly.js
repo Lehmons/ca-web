@@ -66,7 +66,6 @@ export default function Scrolly({ email, socialMedia}) {
 	}, [viewportW, viewportH]);
 
 	useEffect(()=> {
-		window.scrollTo(0, 0);
 		setTimeout(() => {
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
 		}, 1300 + 2000);

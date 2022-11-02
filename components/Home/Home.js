@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HomeStyles from "./Home.styled";
 import LogoDesktop from "../LogoDesktop";
 import LogoMobile from "../LogoMobile";
@@ -9,6 +9,7 @@ import useWindowSize from '~/lib/useWindowSize';
 import useMouseOutside from '~/lib/useMouseOutside';
 import random from '~/lib/Utils/random';
 import Head from 'next/head';
+import { useAppStore } from '~/stores/AppStore';
 
 export default function Home({ pageStyle, pageVariants, pageTransition, logos, general }) {
 
@@ -18,6 +19,15 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const socialMedia = general?.socialMedia;
 
 	const isMouseOutside = useMouseOutside();
+
+	const [{ }, { setActiveIndex }] = useAppStore();
+
+	useEffect(()=> {
+		setTimeout(() => {
+			window.scrollTo(0, 0);
+			setActiveIndex(0);
+		}, 0);
+	}, []);
 
   return (
     <HomeStyles
