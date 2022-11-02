@@ -8,23 +8,29 @@ export default function LogoMobile({ logos }) {
 
 	const variants = {
 		active: {
-			height: "50%",
+			height: "47%",
 			display: "block"
 		},
 		inactive: {
 			height: "100%",
 			display: "none",
+		},
+		initial: {
+			height: "100%",
+			display: "block",
 		}
 	}
 
   return (
     <LogoMobileStyles
-			initial="inactive"
+			className="logo-mobile logo-animation"
+			initial="initial"
       animate={viewportW !== undefined && viewportW <= 768 ? 'active' : 'inactive'}
 			variants={variants}
       transition={{
         type: "tween",
         ease: [0.42, 0, 0.58, 1],
+        delay: 2,
         duration: 1.5,
       }}
     >

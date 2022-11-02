@@ -10,8 +10,16 @@ const PortfolioLoginStyles = styled(motion.section)`
   width: 100%;
   height: 100vh;
   background: var(--backgroundColour);
-
   display: flex;
+
+	&.is-mouse-out {
+		background: white;
+	}
+
+	${media.tabletPortraitAndBelow`
+			flex-direction: column-reverse;
+		`}
+
   & > section {
     height: 100vh;
     display: flex;
@@ -25,12 +33,21 @@ const PortfolioLoginStyles = styled(motion.section)`
 
   & > section:nth-child(1) {
     width: 33.3%;
+		${media.tabletPortraitAndBelow`
+			width: 100%;
+			height: 50%;
+		`}
   }
 
   & > section:nth-child(2) {
     flex: 1;
     background: white;
   }
+
+	&.is-mouse-out > section:nth-child(2){
+		background: var(--offscreenColour);
+	}
+
 
   h1,
   input {
@@ -41,7 +58,7 @@ const PortfolioLoginStyles = styled(motion.section)`
 			font-size: var(--fontSizeDesktop);
 		`}
     ${media.tabletPortraitAndBelow`
-			font-size: var(--fontSizeMobile);
+			font-size: var(--fontSizeMobile) !important;
 		`}
   }
 

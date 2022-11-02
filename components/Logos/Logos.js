@@ -9,7 +9,7 @@ export default function Logos({ logos }) {
 	const logoReference = [logos?.logo1, logos?.logo2, logos?.logo3, logos?.logo4];
 
   return (
-    <LogosStyles>
+    <LogosStyles className="logos">
 			<ImageBlock asset={logoReference[activeIndex]?.image?.asset} image={logoReference[activeIndex]?.image} paddingBottom={false} />
     </LogosStyles>
   );

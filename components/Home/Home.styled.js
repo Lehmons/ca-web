@@ -11,6 +11,17 @@ const HomeStyles = styled(motion.section)`
   height: 100%;
 	background: var(--backgroundColour);
 
+
+	&.is-mouse-out,
+	&.is-mouse-out .one,
+	&.is-mouse-out .two,
+	&.is-mouse-out .three {
+		background: white;
+	}
+
+	&.is-mouse-out .logos {
+		background: var(--offscreenColour);
+	}
 `;
 
 export default HomeStyles;

@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@mux/mux-player-react": "^1.2.0",
+		"@n8tb1t/use-scroll-position": "^2.0.3",
 		"@sanity/block-content-to-react": "^3.0.0",
 		"@sanity/image-url": "^1.0.1",
 		"@svgr/webpack": "^6.5.0",

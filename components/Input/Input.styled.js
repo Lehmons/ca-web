@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const InputStyles = styled(motion.section)`
   font-size: 0;
+	background: transparent;
 
   input.has-error {
     border-color: ${props => props.theme.error};
@@ -62,6 +63,7 @@ const InputStyles = styled(motion.section)`
     padding: 1.2rem 2rem 1.2rem 0;
     transition: border-color ease-in-out 0.25s, color ease-in-out 0.25s, opacity ease-in-out 0.25s;
     border-radius: 0;
+		background: transparent;
     ${media.smallDesktopAndBelow`
 			padding: 12px 20px 12px 0;
 		`};

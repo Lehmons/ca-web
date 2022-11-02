@@ -32,6 +32,10 @@ const GlobalStyles = createGlobalStyle`
 		font-family: ${font.family100};
   }
 
+	::-webkit-scrollbar {
+		display: none;
+	}
+
 	html, body{
 		font-size:  ${(props) =>
       (props.theme.baseline * 100) / props.theme.viewport}vmax;

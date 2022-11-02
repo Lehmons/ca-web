@@ -11,31 +11,25 @@ const PortfolioPageStyles = styled(motion.section)`
   height: 100%;
   min-height: 100vh;
 
-  section {
+  .wrapper {
     display: flex;
-    justify-content: flex-end;
     width: 100%;
     height: 100vh;
-    top: 0;
-    left: 0;
     background: white;
     margin: auto;
-    ${media.tabletPortraitAndBelow`
-    display: flex;
-    align-items: top;
-    justify-content: flex-end;
-      max-width: 100vw;
-			padding-left: 20px;
-			padding-right: 20px;
-`}
+		align-items: center;
+    ${media.smallDesktopAndBelow`
+
+	`}
+		${media.tabletPortraitAndBelow`
+			flex-direction: column-reverse;
+		`}
   }
 
-  a {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .download-panel {
     align-items: center;
     display: flex;
-    position: absolute;
+    position: relative;
     left: 0;
     height: 100%;
     z-index: 1;
@@ -43,26 +37,71 @@ const PortfolioPageStyles = styled(motion.section)`
     color: black;
     text-align: center;
     background: var(--backgroundColour);
-    ${media.tabletPortraitAndBelow`
-			padding-left: 20px;
-			padding-right: 20px;
-`}
+		${media.tabletPortraitAndBelow`
+			width: 100%;
+			height: 50%;
+		`}
   }
 
-  mux-player {
-    display: flex;
-    width: 66.7%;
-    padding: 6rem;
-    max-height: calc(100% - 12rem);
-    max-width: calc(100% - 12rem);
-    background: white;
-    ${media.tabletPortraitAndBelow`
+	&.is-mouse-out .download-panel{
+		background: white;
+	}
+
+
+	a {
+		color: black;
+		text-align: center;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		${media.smallDesktopAndBelow`
+			padding-left: 20px;
+			padding-right: 20px;
+		`}
+	}
+
+	.video-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 66.6%;
+		height: 100vh;
+		padding-left: 6rem;
+		padding-right: 6rem;
+		${media.smallDesktopAndBelow`
 			padding-left: 60px;
 			padding-right: 60px;
-      max-height: calc(100% - 120px);
-      max-width: calc(100% - 120px);
-`}
-  }
+		`}
+		${media.tabletPortraitAndBelow`
+			width: 100%;
+			height: 50%;
+			padding: 20px;
+			height: 50vh;
+		`}
+	}
+
+	&.is-mouse-out .video-container{
+		background: var(--offscreenColour);
+	}
+
+	/* mux-player {
+		width: 100%;
+		height: 100%;
+		max-width: calc(100% - 12rem);
+		max-height: calc(100vh - 12rem);
+		${media.smallDesktopAndBelow`
+			max-width: calc(100% - 120px);
+			max-height: calc(100vh - 120px);
+		`}
+		${media.tabletPortraitAndBelow`
+			max-width: calc(100vw - 40px);
+			max-height: calc(50vh - 40px);
+		`}
+	} */
 `;
 
 export default PortfolioPageStyles;

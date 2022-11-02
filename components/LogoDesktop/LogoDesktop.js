@@ -16,18 +16,25 @@ export default function LogoDesktop({ logos }) {
 			width: "100%",
 			left: "0%",
 			display: "none",
+		},
+		initial: {
+			width: "100%",
+			left: "0%",
+			display: "block",
 		}
 	}
 
   return (
     <LogoDesktopStyles
-			initial="inactive"
+			className="logo-desktop logo-animation"
+			initial="initial"
 			animate={viewportW !== undefined && viewportW > 768 ? 'active' : 'inactive'}
 			variants={variants}
       transition={{
         type: "tween",
         ease: [0.42, 0, 0.58, 1],
         duration: 1.5,
+				delay: 2
       }}
     >
       <Logos logos={logos}/>

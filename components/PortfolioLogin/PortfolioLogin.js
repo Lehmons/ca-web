@@ -5,9 +5,12 @@ import Input from '../Input';
 import { useAppStore } from '~/stores/AppStore';
 import { setCookie } from 'nookies';
 import Head from 'next/head';
+import useMouseOutside from '~/lib/useMouseOutside';
 
-export default function PortfolioLogin({ pageStyle, pageVariants, pageTransition, password }) {
+export default function PortfolioLogin({ pageStyle, pageVariants, pageTransition, password, downloadLink }) {
 	const [{ hasLoggedIn }, { setHasLoggedIn }] = useAppStore();
+
+	const isMouseOutside = useMouseOutside();
 	
 	const onInput = e => {
 		if(e?.target?.value === password){
@@ -29,7 +32,7 @@ export default function PortfolioLogin({ pageStyle, pageVariants, pageTransition
 		exit="out"
 		variants={pageVariants}
 		transition={pageTransition}
-		className="page portfolio-page"
+		className={`page portfolio-page ${isMouseOutside ? 'is-mouse-out' : ''}`}
 		>
 			<Head>
 				<title>Commercial Artists</title>

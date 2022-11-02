@@ -5,7 +5,7 @@ import { useAppStore } from '~/stores/AppStore';
 import PortfolioPage from '../PortfolioPage';
 import PortfolioLogin from '../PortfolioLogin';
 
-export default function Portfolio({ pageStyle, pageVariants, pageTransition, portfolio, video, password }) {
+export default function Portfolio({ pageStyle, pageVariants, pageTransition, portfolio, video, password, downloadLink }) {
 	const [{ hasLoggedIn }, { setHasLoggedIn }] = useAppStore();
 	
 	useEffect(()=> {
@@ -16,6 +16,6 @@ export default function Portfolio({ pageStyle, pageVariants, pageTransition, por
 	}, []);
 
   return(hasLoggedIn ? 
-		<PortfolioPage pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} portfolio={portfolio} video={video} /> : 
+		<PortfolioPage pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} portfolio={portfolio} video={video} downloadLink={downloadLink}/> : 
 		<PortfolioLogin pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} password={password} />);
 }

@@ -8,7 +8,8 @@ const query = groq`*[_type == "general"][0]{
   fontSizeMobile,
   letterSpacing,
   lineHeight,
-  backgroundColour
+  backgroundColour,
+	offscreenColour
 }`;
 
 export default function Settings() {
@@ -19,6 +20,10 @@ export default function Settings() {
     document.documentElement.style.setProperty(
       "--backgroundColour",
       data?.backgroundColour?.hex
+    );
+    document.documentElement.style.setProperty(
+      "--offscreenColour",
+      data?.offscreenColour?.hex
     );
     document.documentElement.style.setProperty(
       "--fontSizeLargeDesktop",

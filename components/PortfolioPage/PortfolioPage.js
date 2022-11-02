@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PortfolioPageStyles from "./PortfolioPage.styled";
 import MuxPlayer from "@mux/mux-player-react";
 import Head from "next/head";
+import useMouseOutside from '~/lib/useMouseOutside';
+
 
 export default function PortfolioPage({
   pageStyle,
@@ -9,7 +11,11 @@ export default function PortfolioPage({
   pageTransition,
   portfolio,
   video,
+	downloadLink
 }) {
+
+	const isMouseOutside = useMouseOutside();
+
   return (
     <PortfolioPageStyles
       key="#portfolio"
@@ -19,18 +25,21 @@ export default function PortfolioPage({
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="page portfolio"
+      className={`page portfolio ${isMouseOutside ? 'is-mouse-out' : ''}`}
     >
       <Head>
         <title>Commercial Artists</title>
         <meta name="robots" content="noindex" />
       </Head>
-      <section>
-        {portfolio && (
-          <a href={`${portfolio?.asset?.url}`} download>
-            Download PDF
-          </a>
-        )}
+      <section className="wrapper">
+				<section className='download-panel'>
+					{portfolio && (
+						<a href={`${portfolio?.asset?.url}`} download>
+							{downloadLink ||  "Download PDF"}
+						</a>
+					)}
+				</section>
+				<section className="video-container">
         {video && (
           <MuxPlayer
             playbackId={video?.asset?.playbackId}
@@ -40,6 +49,7 @@ export default function PortfolioPage({
             }}
           />
         )}
+				</section>
       </section>
     </PortfolioPageStyles>
   );

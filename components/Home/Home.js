@@ -6,6 +6,7 @@ import Spacer from "../Spacer";
 import Scrolly from "../Scrolly";
 import { ScrollTriggerProvider } from "~/lib/scrollTriggerProvider";
 import useWindowSize from '~/lib/useWindowSize';
+import useMouseOutside from '~/lib/useMouseOutside';
 import random from '~/lib/Utils/random';
 import Head from 'next/head';
 
@@ -16,7 +17,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const email = general?.email;
 	const socialMedia = general?.socialMedia;
 
-	console.log(general);
+	const isMouseOutside = useMouseOutside();
 
   return (
     <HomeStyles
@@ -27,7 +28,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="page home"
+      className={`page home ${isMouseOutside ? 'is-mouse-out' : ''}`}
     >	
 			<Head>
 				<title>{general?.seoTitle}</title>
@@ -36,12 +37,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
       {logos && logos?.logoset && (<LogoDesktop logos={logos?.logoset?.[randomIndex]}/>)}
 			{logos && logos?.logoset && (<LogoMobile logos={logos?.logoset?.[randomIndex]} />)}
 			<Spacer/>
-			<ScrollTriggerProvider
-          debug={false}
-					options={{ end: "+=0%", pin: false }}
-					>
-      	<Scrolly email={email} socialMedia={socialMedia}/>
-			</ScrollTriggerProvider>
+			<Scrolly email={email} socialMedia={socialMedia}/>
     </HomeStyles>
   );
 }
