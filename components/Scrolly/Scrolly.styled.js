@@ -15,7 +15,6 @@ const ScrollyStyles = styled.section`
 	${media.smallDesktopAndBelow`
 		padding-left: 20px;
 		padding-right: 20px;
-		padding-bottom: 20px;
 	`}
 	${media.tabletLandscapeAndBelow`
 		padding-bottom: 100vh;
