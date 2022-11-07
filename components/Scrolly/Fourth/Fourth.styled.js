@@ -20,6 +20,11 @@ const FourthStyles = styled.section`
 	&.is-active {
 		opacity: 1;
 	}
+
+	p, a {
+		font-size: var(--fontSizeDesktop);
+		color: var(--textColour);
+	}
 `;
 
 export default FourthStyles;

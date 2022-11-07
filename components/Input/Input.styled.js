@@ -28,10 +28,14 @@ const InputStyles = styled(motion.section)`
   input,
   span,
   label {
-    font-size: ${font.p};
-    ${media.smallDesktopAndBelow`
-      font-size: ${font.pMobile};
-    `};
+		letter-spacing: var(--letterSpacing);
+		font-size: var(--fontSizeDesktop);
+		${media.smallDesktopAndBelow`
+			font-size: var(--fontSizeDesktop);
+		`}
+		${media.tabletPortraitAndBelow`
+			font-size: var(--fontSizeMobile);
+		`}
   }
 
 	button.reset {
@@ -39,16 +43,6 @@ const InputStyles = styled(motion.section)`
 		display: none;
 		user-select: none;
 	}
-
-  input {
-    font-size: ${font.p};
-    ${media.smallDesktopAndBelow`
-      font-size: ${font.pMobile};
-    `};
-    ${media.mobileOnly`
-      font-size: ${font.pInputMobile};
-    `};
-  }
 
   label {
     position: relative;

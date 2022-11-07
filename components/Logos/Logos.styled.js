@@ -6,13 +6,24 @@ import styled from "styled-components";
 import { font, media, underline } from "../Styles";
 
 const LogosStyles = styled.section`
-	height: 100%;
-	.image-block {
+	height: 100vh;
+	
+	.svg-container {
+		display: block;
+		width: 100%;
 		height: 100%;
 	}
-  .image-wrapper {
-		height: 100% !important;
-		padding-bottom: initial !important;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	svg polygon,
+	svg rect,
+	svg path {
+		fill: var(--textColour);
 	}
 
 `;

@@ -3,11 +3,12 @@ import ScrollElemStyles from "./ScrollElem.styled";
 import { useAppStore } from '~/stores/AppStore';
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
-export default function ScrollElem({ className, children, fixedPos, heightOffset, topPos, i }) {
+export default function ScrollElem({ className, children, fixedPos, heightOffset, topPos, scrollPosition, i }) {
 	const elements = React.Children.toArray(children);
 	const [isFixed, setIsFixed] = useState(false);
 	const [{ }, { setActiveIndex }] = useAppStore();
 	let shouldUnfix = false;
+
 
 	// useEffect(() => {
 	// 	function onScroll(){
@@ -25,12 +26,13 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
 
 	useScrollPosition(
     ({ prevPos, currPos }) => {
-      if (fixedPos === undefined) {
+      if (scrollPosition === undefined) {
         return;
       }
       const { scrollY } = window;
 
-			const newFixed = scrollY >= fixedPos + heightOffset;
+			const newFixed = scrollY >= scrollPosition + heightOffset;
+
       setIsFixed(newFixed);
 
 			if(newFixed){
@@ -42,7 +44,7 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
 				shouldUnfix = false;
 			}
     },
-    [fixedPos]
+    [fixedPos, scrollPosition]
   );
 
 	useEffect(()=> {

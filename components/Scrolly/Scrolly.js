@@ -9,10 +9,11 @@ import Fourth from "./Fourth";
 
 export default function Scrolly({ email, socialMedia}) {
 	const { viewportW, viewportH } = useWindowSize();
+	const [ scrollPositions, setScrollPositions ] = useState();
 	const [ fixedPositions, setFixedPositions ] = useState();
 	const [ tops, setTops ] = useState();
 	const ref = useRef();
-	const marginSpace = 10;
+	const marginSpace = 400;
 	const [{ }, { setActiveIndex }] = useAppStore();
 
 	const calculate = () => {
@@ -20,7 +21,6 @@ export default function Scrolly({ email, socialMedia}) {
 		if(!sections?.length){
 			return;
 		}
-		const offset = viewportW < 768 ? 100 : 100;
 
 		// set top of elements to create offsets
 		const newTops = [];
@@ -38,14 +38,31 @@ export default function Scrolly({ email, socialMedia}) {
 		});
 		setTops(newTops);
 
+		// set scroll positions
+		const newScrollPositions = [];
+		heightCounter = 0;
+		const basePosition = viewportH - convertToRemOrPx(20);
+		sections.map((section, i) => {
+			if(i === 0){
+				newScrollPositions.push(basePosition);
+				heightCounter += basePosition;
+			} else{
+				const prevElem = sections[i - 1];
+				const prevElemSpan = prevElem?.querySelector('.two-lines');
+				const height = prevElemSpan?.getBoundingClientRect()?.height || 0;
+				newScrollPositions.push(height + heightCounter  + (marginSpace * i));
+				heightCounter += height;
+			}
+		});
+		setScrollPositions(newScrollPositions);
+
 		// set fixed position based on viewportH / 2 + section heights
 		const newFixedPositions = [];
 		heightCounter = 0;
-		const basePosition = (viewportH / 2);
 		sections.map((section, i) => {
 			if(i === 0){
-				newFixedPositions.push(basePosition);
-				heightCounter += basePosition;
+				newFixedPositions.push(20);
+				heightCounter += 20;
 			} else{
 				const prevElem = sections[i - 1];
 				const prevElemSpan = prevElem?.querySelector('.two-lines');
@@ -74,6 +91,16 @@ export default function Scrolly({ email, socialMedia}) {
 		}, 1300 + 2000);
 	}, []);
 
+	// useEffect(()=> {
+	//  document.addEventListener('scroll', () => {
+	// 	const scrollY = window.scrollY;
+	// 	console.log(scrollY);
+	//  });
+	//  return () => {
+
+	//  }
+	// }, []);
+
 	const convertToRemOrPx = val => {
 		if(!viewportW || viewportW <= 1440){
 			return val;
@@ -83,19 +110,19 @@ export default function Scrolly({ email, socialMedia}) {
 
   return (
     <ScrollyStyles ref={ref}>
-			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
+			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} scrollPosition={scrollPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
 				<p><span>is a multi-disciplinary<br/> london-based collective<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>
 			</ScrollElem>
-			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(40)} i={2}>
+			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(30)} i={2}>
 				<p><span>We explore, question,<br/> collaborate and create.<br/></span><span>Using art direction, design and<br/> spatial forms to delier emotive<br/> concepts for a diverse audience.</span></p>
 			</ScrollElem>
-			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(73)} i={3}>
+			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(73)} i={3}>
 					<p>Our experiences and communities<br/> define our way forward.</p>
 			</ScrollElem>
 			<Fourth >
 				<p>{email && (<SimpleBlockContent blocks={email}/>)}{socialMedia ? (socialMedia.map((item, i) => (
 						<SimpleBlockContent key={i} blocks={item?.link}/>))) : null}</p>
-			</Fourth>
+			</Fourth> 
 			<section className="pseudo">
 				<section className="one" >
 					<p><span className="two-lines">is a multi-disciplinary<br/> london-based collective<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>

@@ -11,13 +11,10 @@ const ScrollyStyles = styled.section`
 	padding-right: 2rem;
 	padding-bottom: 2rem;
 	padding-top: 100vh;
-	padding-bottom: 50vh;
+	padding-bottom: 100vh;
 	${media.smallDesktopAndBelow`
 		padding-left: 20px;
 		padding-right: 20px;
-	`}
-	${media.tabletLandscapeAndBelow`
-		padding-bottom: 100vh;
 	`}
 
 	.wrapper {
@@ -30,7 +27,7 @@ const ScrollyStyles = styled.section`
 	}
 
 	.pseudo section + section {
-		margin-top: 10px;
+		margin-top: 400px;
 	}
 
 	& > .three {
@@ -44,6 +41,7 @@ const ScrollyStyles = styled.section`
 		text-transform: uppercase;
 		letter-spacing: var(--letterSpacing);
 		font-size: var(--fontSizeDesktop);
+		color: var(--textColour);
 		${media.smallDesktopAndBelow`
 			font-size: var(--fontSizeDesktop);
 		`}

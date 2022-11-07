@@ -11,17 +11,28 @@ const HomeStyles = styled(motion.section)`
   height: 100%;
 	background: var(--backgroundColour);
 
+	&.is-mouse-out {
+		background: var(--offscreenColour);
+	}
 
 	&.is-mouse-out,
 	&.is-mouse-out .one,
 	&.is-mouse-out .two,
 	&.is-mouse-out .three {
-		background: white;
-	}
-
-	&.is-mouse-out .logos {
 		background: var(--offscreenColour);
 	}
+
+	&.is-mouse-out .logos svg path,
+	&.is-mouse-out .logos svg rect,
+	&.is-mouse-out .logos svg polygon {
+		fill: var(--offscreenTextColour);
+	}
+
+	&.is-mouse-out p,
+	&.is-mouse-out a {
+		color: var(--offscreenTextColour);
+	}
+
 `;
 
 export default HomeStyles;

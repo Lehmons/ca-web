@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomeStyles from "./Home.styled";
-import LogoDesktop from "../LogoDesktop";
-import LogoMobile from "../LogoMobile";
+import LogoAnimation from "../LogoAnimation";
 import Spacer from "../Spacer";
 import Scrolly from "../Scrolly";
 import { ScrollTriggerProvider } from "~/lib/scrollTriggerProvider";
@@ -19,6 +18,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const socialMedia = general?.socialMedia;
 
 	const isMouseOutside = useMouseOutside();
+	// const isMouseOutside = false;
 
 	const [{ activeIndex }, { setActiveIndex }] = useAppStore();
 
@@ -43,8 +43,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 				<title>{general?.seoTitle}</title>
 				<meta name="description" content={general?.seoDescription}/>
 			</Head>
-      {logos && logos?.logoset && (<LogoDesktop logos={logos?.logoset?.[randomIndex]}/>)}
-			{logos && logos?.logoset && (<LogoMobile logos={logos?.logoset?.[randomIndex]} />)}
+      {logos && logos?.logoset && (<LogoAnimation logos={logos?.logoset?.[randomIndex]}/>)}
 			<Spacer/>
 			<Scrolly email={email} socialMedia={socialMedia}/>
     </HomeStyles>

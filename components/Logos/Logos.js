@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import LogosStyles from "./Logos.styled";
 import ImageBlock from '../ImageBlock';
 import { useAppStore } from '~/stores/AppStore';
+import rawMarkup from '~/lib/rawMarkup';
 
 export default function Logos({ logos }) {
 	const [{ activeIndex }] = useAppStore();
@@ -10,7 +11,7 @@ export default function Logos({ logos }) {
 
   return (
     <LogosStyles className="logos">
-			<ImageBlock asset={logoReference[activeIndex]?.image?.asset} image={logoReference[activeIndex]?.image} paddingBottom={false} />
+			<span className="svg-container" dangerouslySetInnerHTML={logoReference[activeIndex] && rawMarkup(logoReference[activeIndex])} />
     </LogosStyles>
   );
 }

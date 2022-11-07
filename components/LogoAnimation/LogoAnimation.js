@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import LogoDesktopStyles from "./LogoDesktop.styled";
+import LogoAnimationStyles from "./LogoAnimation.styled";
 import useWindowSize from '~/lib/useWindowSize';
 import Logos from '../Logos';
 
-export default function LogoDesktop({ logos }) {
+export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
 
 	const variants = {
 		active: {
-			width: "66.6%",
-			left: "33.3%",
+			width: "64%",
+			left: "18%",
 			display: "block"
 		},
 		inactive: {
@@ -25,10 +25,10 @@ export default function LogoDesktop({ logos }) {
 	}
 
   return (
-    <LogoDesktopStyles
-			className="logo-desktop logo-animation"
+    <LogoAnimationStyles
+			className="logo-animation"
 			initial="initial"
-			animate={viewportW !== undefined && viewportW > 768 ? 'active' : 'inactive'}
+			animate={'active'}
 			variants={variants}
       transition={{
         type: "tween",
@@ -38,6 +38,6 @@ export default function LogoDesktop({ logos }) {
       }}
     >
       <Logos logos={logos}/>
-    </LogoDesktopStyles>
+    </LogoAnimationStyles>
   );
 }

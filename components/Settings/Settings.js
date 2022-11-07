@@ -9,7 +9,9 @@ const query = groq`*[_type == "general"][0]{
   letterSpacing,
   lineHeight,
   backgroundColour,
-	offscreenColour
+  textColour,
+	offscreenColour,
+	offscreenTextColour,
 }`;
 
 export default function Settings() {
@@ -20,6 +22,14 @@ export default function Settings() {
     document.documentElement.style.setProperty(
       "--backgroundColour",
       data?.backgroundColour?.hex
+    );
+		document.documentElement.style.setProperty(
+      "--textColour",
+      data?.textColour?.hex
+    );
+    document.documentElement.style.setProperty(
+      "--offscreenTextColour",
+      data?.offscreenTextColour?.hex
     );
     document.documentElement.style.setProperty(
       "--offscreenColour",
