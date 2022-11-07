@@ -24,6 +24,12 @@ const FourthStyles = styled.section`
 	p, a {
 		font-size: var(--fontSizeDesktop);
 		color: var(--textColour);
+		${media.smallDesktopAndBelow`
+			font-size: var(--fontSizeDesktop);
+		`}
+		${media.tabletPortraitAndBelow`
+			font-size: var(--fontSizeMobile);
+		`}
 	}
 `;
 
