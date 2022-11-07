@@ -7,6 +7,7 @@ import { font, media, underline } from "../Styles";
 
 const LogosStyles = styled.section`
 	height: 100vh;
+	pointer-events: none;
 	
 	.svg-container {
 		display: block;
