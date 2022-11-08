@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ScrollElemStyles from "./ScrollElem.styled";
 import { useAppStore } from '~/stores/AppStore';
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import SectionFadeIn from '../../SectionFadeIn';
 
 export default function ScrollElem({ className, children, fixedPos, heightOffset, topPos, scrollPosition, i }) {
 	const elements = React.Children.toArray(children);
@@ -61,7 +62,9 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
 
   return (
     <ScrollElemStyles className={`${className} ${isFixed ? 'is-fixed' : ''}`} style={{top: isFixed ? `${fixedPos}px` : `${topPos}px` }} >
+			<SectionFadeIn>
       {elements}
+			</SectionFadeIn>
     </ScrollElemStyles>
   );
 }
