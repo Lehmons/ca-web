@@ -111,10 +111,10 @@ export default function Scrolly({ email, socialMedia}) {
   return (
     <ScrollyStyles ref={ref}>
 			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} scrollPosition={scrollPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
-				<p><span>is a multi-disciplinary<br/> london-based collective<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>
+				<p><span>is a multi-disciplinary<br/> london-based collective<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution</span></p>
 			</ScrollElem>
 			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(30)} i={2}>
-				<p><span>We explore, question,<br/> collaborate and create.<br/></span><span>Using art direction, design and<br/> spatial forms to delier emotive<br/> concepts for a diverse audience.</span></p>
+				<p><span>We explore, question,<br/> collaborate and create<br/></span><span>using art direction, design and<br/> spatial forms to delier emotive<br/> concepts for a diverse audience</span></p>
 			</ScrollElem>
 			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(60)} i={3}>
 					<p>Our experiences and communities<br/> define our way forward.</p>
