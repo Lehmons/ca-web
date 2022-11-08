@@ -8,8 +8,8 @@ export default function LogoAnimation({ logos }) {
 
 	const variants = {
 		active: {
-			width: "64%",
-			left: "18%",
+			width: "45%",
+			left: "27.5%",
 			display: "block"
 		},
 		inactive: {

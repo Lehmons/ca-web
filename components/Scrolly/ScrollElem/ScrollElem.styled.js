@@ -22,6 +22,10 @@ const ScrollElemStyles = styled(motion.section)`
 	&.is-fixed p > span:nth-child(2){
 		opacity: 0.2;
 	}
+
+	&.is-fixed .hidden {
+		opacity: 1;
+	}
 `;
 
 export default ScrollElemStyles;

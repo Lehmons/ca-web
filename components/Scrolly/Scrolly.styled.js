@@ -53,6 +53,10 @@ const ScrollyStyles = styled.section`
 	a {
 		color: black;
 	}
+
+	.hidden {
+		opacity: 0;
+	}
 `;
 
 export default ScrollyStyles;

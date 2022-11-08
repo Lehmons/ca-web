@@ -48,10 +48,18 @@ const PortfolioLoginStyles = styled(motion.section)`
 		background: var(--offscreenColour);
 	}
 
+	h1 {
+		color: var(--textColour);
+	}
+
+	&.is-mouse-out h1 {
+		color: var(--offscreenTextColour);
+	}
+
 
   h1,
   input {
-    font-size: var(--fontSizeLargeDesktop);
+    font-size: var(--fontSizeDesktop);
     text-transform: uppercase;
     letter-spacing: var(--letterSpacing);
     ${media.smallDesktopAndBelow`
