@@ -68,3 +68,58 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
     </ScrollElemStyles>
   );
 }
+
+
+// const textVariants = {
+//   visible: ({ i, delay }) => ({
+//     opacity: 1,
+//     transition: {
+//       delay: delay + i * 0.1,
+//       duration: 0.3,
+//     },
+//   }),
+//   hidden: { opacity: 0 },
+// };
+
+// function IntroCoverTitle({ text, inView, delay }) {
+//   if (!text) return null;
+
+//   const newStr = text.split(" ");
+//   const textControls = useAnimation();
+
+//   React.useEffect(
+//     () => {
+//       if (inView) {
+//         textControls.start("visible");
+//       } else {
+//         textControls.start("hidden");
+//       }
+//     },
+//     [inView]
+//   );
+
+//   const introCoverClass = cx({
+//     [styles.box]: true,
+//     ["intro-cover-title"]: true,
+//   });
+
+//   return (
+//     <div className={introCoverClass}>
+//       <h2>
+//         {newStr.map((c, i) => (
+//           <motion.span
+//             className={styles.word}
+//             key={i}
+//             custom={{ i, delay }}
+//             animate={textControls}
+//             variants={textVariants}
+//           >
+//             {c}
+//           </motion.span>
+//         ))}
+//       </h2>
+//     </div>
+//   );
+// }
+
+// export default IntroCoverTitle;

@@ -4,6 +4,7 @@ import { usePreviewSubscription } from "../lib/sanity";
 import dynamic from "next/dynamic";
 const Home = dynamic(() => import("../components/Home"));
 const PortfolioComponent = dynamic(() => import("../components/Portfolio"));
+const TestComponent = dynamic(() => import("../components/Test"));
 
 export default function Page({
   data,
@@ -25,6 +26,14 @@ export default function Page({
     <>
       {docType === "home" && (
         <Home
+          pageStyle={pageStyle}
+          pageVariants={pageVariants}
+          pageTransition={pageTransition}
+          {...previewData}
+        />
+      )}
+      {docType === "test" && (
+        <TestComponent
           pageStyle={pageStyle}
           pageVariants={pageVariants}
           pageTransition={pageTransition}
