@@ -13,16 +13,16 @@ export default function Test({ pageStyle, pageVariants, pageTransition, logos, g
       if(pos < 50){
 				setActiveIndex(0);
 			}
-			else if(pos < 100){
+			else if(pos < 200){
 				setActiveIndex(1);
 			}
-			else if(pos < 150){
+			else if(pos < 300){
 				setActiveIndex(2);
 			}
-			else if(pos < 200){
+			else if(pos < 400){
 				setActiveIndex(3);
 			}
-			else if(pos < 250){
+			else if(pos < 500){
 				setActiveIndex(0);
 			}
     },
