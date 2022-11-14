@@ -11,6 +11,7 @@ import Head from 'next/head';
 import { useAppStore } from '~/stores/AppStore';
 import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 import { motion, animate } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
 
@@ -18,6 +19,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const ref = useRef();
 	const shouldScroll = useRef(true);
 	const timeout = useRef();
+	const router = useRouter();
 
 	const randomIndex = logos?.logoset ? random(0, logos?.logoset?.length - 1) : null;
 	
@@ -51,11 +53,14 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		window.addEventListener('scroll', setLogoAnimatedOnScroll);
 	}, []);
 
-	const confirmPageRefresh = () => {
+	const confirmPageRefresh = (e) => {
+		e?.preventDefault();
 		ref.current.classList.remove("is-logo-animated");
+		void ref.current.offsetWidth;
 		ref.current.classList.add("is-not-logo-animated");
 		ref.current.style.webkitAnimation = 'none';
-		void ref.current.offsetWidth;
+		router.reload(window.location.pathname);
+		return;
 		const newone = ref.current.cloneNode(true);
 		ref.current.parentNode.replaceChild(newone, ref.current);
 		document.body.innerHTML = '';
@@ -73,6 +78,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	}
 
 	const handleResize = e => {
+		e?.preventDefault();
 		clearTimeout(resizeTimer.current);
 		if(window.innerWidth < 768){
 			return;
