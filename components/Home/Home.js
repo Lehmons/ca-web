@@ -10,6 +10,7 @@ import random from '~/lib/Utils/random';
 import Head from 'next/head';
 import { useAppStore } from '~/stores/AppStore';
 import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
+import { motion, animate } from 'framer-motion';
 
 export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
 
@@ -54,6 +55,9 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		ref.current.classList.remove("is-logo-animated");
 		ref.current.classList.add("is-not-logo-animated");
 		ref.current.style.webkitAnimation = 'none';
+		void ref.current.offsetWidth;
+		const newone = ref.current.cloneNode(true);
+		ref.current.parentNode.replaceChild(newone, elm);
 		document.body.innerHTML = '';
 		reset();
 	};
@@ -104,10 +108,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 				<title>{general?.seoTitle}</title>
 				<meta name="description" content={general?.seoDescription}/>
 			</Head>
-				<section>
+				<>
 					{logos && logos?.logoset && (<LogoAnimation logos={logos?.logoset?.[randomIndex]}/>)}
 					<Scrolly email={email} socialMedia={socialMedia}/>
-				</section>
+				</>
     </HomeStyles>
   );
 }
