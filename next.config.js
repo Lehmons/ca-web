@@ -9,6 +9,9 @@ module.exports = {
     NEXT_PUBLIC_SANITY_PROJECT_ID,
     NEXT_PUBLIC_SANITY_DATASET,
   },
+	experimental: {
+		reactRefresh: true
+	},
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
       (rule) => rule.test && rule.test.test(".svg")
