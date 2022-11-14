@@ -86,7 +86,7 @@ const HomeStyles = styled(motion.section)`
 
 	&.is-resizing p, 
 	&.is-resizing a {
-		display: none;
+		opacity: 0;
 	}
 
 `;
