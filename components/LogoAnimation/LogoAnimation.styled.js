@@ -30,6 +30,7 @@ const LogoAnimationStyles = styled(motion.section)`
 
 	&.is-logo-animated {
 		opacity: 0;
+		pointer-events: none;
 	}
 `;
 
