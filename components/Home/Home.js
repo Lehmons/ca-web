@@ -104,10 +104,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 				<title>{general?.seoTitle}</title>
 				<meta name="description" content={general?.seoDescription}/>
 			</Head>
-				<>
+				<section>
 					{logos && logos?.logoset && (<LogoAnimation logos={logos?.logoset?.[randomIndex]}/>)}
 					<Scrolly email={email} socialMedia={socialMedia}/>
-				</>
+				</section>
     </HomeStyles>
   );
 }
