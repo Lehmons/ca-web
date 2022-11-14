@@ -35,6 +35,17 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		window.addEventListener('scroll', setLogoAnimatedOnScroll);
 	}, []);
 
+	const confirmPageRefresh = () => {
+		console.log('yo');
+		setActiveIndex(0);
+		window.scrollTo(0, 0);
+	};
+
+	useEffect(() => {
+		window.addEventListener('beforeunload', confirmPageRefresh);
+		return () => window.removeEventListener('beforeunload', confirmPageRefresh);
+	}, []);
+
   return (
     <HomeStyles
       key="#home"
