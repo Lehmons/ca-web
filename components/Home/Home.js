@@ -54,10 +54,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	}, []);
 
 	const confirmPageRefresh = (e) => {
-		alert(1);
 		ref.current.classList.remove("is-logo-animated");
 		void ref.current.offsetWidth;
 		ref.current.classList.add("is-not-logo-animated");
+		ref.current.style.animation = "backgroundFade";
 		ref.current.style.webkitAnimation = 'none';
 		const newone = ref.current.cloneNode(true);
 		ref.current.parentNode.replaceChild(newone, ref.current);
