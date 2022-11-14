@@ -9,7 +9,9 @@ export default function LogoAnimation({ logos }) {
 	const [{ }, { setIsLogoAnimated }] = useAppStore();
 	
 	const onComplete = () => {
-		setIsLogoAnimated(true)
+		setTimeout(() => {
+			setIsLogoAnimated(true)
+		}, 1500);
 	};
 
 	const variants = {

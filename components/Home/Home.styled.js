@@ -37,7 +37,7 @@ const HomeStyles = styled(motion.section)`
 	&.is-not-logo-animated {
 		animation: backgroundFade;
 		animation-duration: 1.5s;
-		animation-delay: 2.5s;
+		animation-delay: 4s;
 	}
 
 	&.is-not-logo-animated .logos svg path,
@@ -45,7 +45,7 @@ const HomeStyles = styled(motion.section)`
 	&.is-not-logo-animated .logos svg polygon {
 		animation: fillFade;
 		animation-duration: 1.5s;
-		animation-delay: 2.5s;
+		animation-delay: 4s;
 	}
 
 	&.is-logo-animated .logos svg path,

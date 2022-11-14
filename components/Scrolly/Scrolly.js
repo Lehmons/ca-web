@@ -88,7 +88,7 @@ export default function Scrolly({ email, socialMedia}) {
 		setActiveIndex(0);
 		setTimeout(() => {
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
-		}, 1300 + 2000 + 500);
+		}, 1300 + 2000 + 500 + 1500);
 	}, []);
 
 	const convertToRemOrPx = val => {
