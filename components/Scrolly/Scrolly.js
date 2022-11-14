@@ -6,10 +6,12 @@ import SimpleBlockContent from "../SimpleBlockContent";
 import useWindowSize from '~/lib/useWindowSize';
 import ScrollElem from "./ScrollElem";
 import Fourth from "./Fourth";
+import getClosestValue from "~/lib/Utils/getClosestValue";
 
 export default function Scrolly({ email, socialMedia}) {
 	const { viewportW, viewportH } = useWindowSize();
 	const [ scrollPositions, setScrollPositions ] = useState();
+	const [ scrollTriggers, setScrollTriggers ] = useState();
 	const [ fixedPositions, setFixedPositions ] = useState();
 	const [ tops, setTops ] = useState();
 	const ref = useRef();
@@ -19,8 +21,20 @@ export default function Scrolly({ email, socialMedia}) {
 	useScrollPosition(
     ({ prevPos, currPos }) => {
       const { scrollY } = window;
+			const isScrollingUp = prevPos?.y < currPos?.y;
+			if(!scrollPositions?.length || !scrollTriggers){
+				return;
+			}
+			if(scrollY <= scrollPositions[0] || scrollY === scrollPositions[1] || scrollY >= scrollPositions[scrollPositions?.length - 1]){
+				return;
+			}
+			const closest = getClosestValue(scrollTriggers, scrollY);
+			const newActiveIndex = scrollTriggers.indexOf(closest);
+			setActiveIndex(newActiveIndex);
+
+
     },
-    [scrollPositions]
+    [scrollPositions, scrollTriggers]
   );
 
 	const calculate = () => {
@@ -62,6 +76,29 @@ export default function Scrolly({ email, socialMedia}) {
 			}
 		});
 		setScrollPositions(newScrollPositions);
+
+		// set scrollTrigggers
+		const newScrollTriggers = [0];
+		if(newScrollPositions?.length === 3){
+			const gap = Math.abs(newScrollPositions[2] - newScrollPositions[0]) / 12;
+			const logoIndexes = Array.from({length: 11}, (_, i) => i + 1);
+			logoIndexes.forEach(logo => {
+				if(logo === 1){
+					newScrollTriggers.push(newScrollPositions[0]);
+				}
+				else if(logo === 7){
+					newScrollTriggers.push(newScrollPositions[1]);
+				}
+				else if(logo === 11){
+					newScrollTriggers.push(newScrollPositions[2]);
+				} else {
+					newScrollTriggers.push((logo * gap) + newScrollPositions[0]);
+				}
+			});
+			if(newScrollTriggers?.length === 12){
+				setScrollTriggers(newScrollTriggers);
+			}
+		}
 
 		// set fixed position based on viewportH / 2 + section heights
 		const newFixedPositions = [];
