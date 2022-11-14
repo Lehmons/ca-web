@@ -88,18 +88,8 @@ export default function Scrolly({ email, socialMedia}) {
 		setActiveIndex(0);
 		setTimeout(() => {
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
-		}, 1300 + 2000);
+		}, 1300 + 2000 + 500);
 	}, []);
-
-	// useEffect(()=> {
-	//  document.addEventListener('scroll', () => {
-	// 	const scrollY = window.scrollY;
-	// 	console.log(scrollY);
-	//  });
-	//  return () => {
-
-	//  }
-	// }, []);
 
 	const convertToRemOrPx = val => {
 		if(!viewportW || viewportW <= 1440){
@@ -116,7 +106,7 @@ export default function Scrolly({ email, socialMedia}) {
 			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(30)} i={2}>
 				<p><span>We explore, question,<br/> collaborate and create<span className="hidden">.</span><br/></span><span>Using art direction, design and<br/> spatial forms to deliver emotive<br/> concepts for a diverse audience.</span></p>
 			</ScrollElem>
-			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(60)} i={3}>
+			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(70)} i={3}>
 					<p>Our experiences and communities<br/> define our way forward.</p>
 			</ScrollElem>
 			<Fourth >

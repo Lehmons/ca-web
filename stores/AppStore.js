@@ -3,6 +3,7 @@ import Store from ".";
 const initialState = {
   hasLoggedIn: false,
   activeIndex: 0,
+	isLogoAnimated: false
 };
 
 function useAppStore() {
@@ -20,11 +21,18 @@ function useAppStore() {
     });
   };
 
+	const setIsLogoAnimated = bool => {
+    setState((draft) => {
+      draft.isLogoAnimated = bool;
+    });
+  };
+
   return [
     state,
     {
       setHasLoggedIn,
       setActiveIndex,
+			setIsLogoAnimated
     },
   ];
 }

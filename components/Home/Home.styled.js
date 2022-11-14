@@ -9,7 +9,54 @@ import { motion } from "framer-motion";
 const HomeStyles = styled(motion.section)`
   width: 100%;
   height: 100%;
-	background: var(--backgroundColour);
+	background: white;
+
+	@keyframes backgroundFade {
+		from {
+			background: white;
+			fill: white;
+		}
+
+		to {
+			fill: var(--backgroundColour);
+			background: var(--backgroundColour);
+		}
+	}
+
+	@keyframes fillFade {
+		from {
+			fill: black !important;
+		}
+
+		to {
+			fill: var(--textColour);
+		}
+	}
+
+
+	&.is-not-logo-animated {
+		animation: backgroundFade;
+		animation-duration: 1.5s;
+		animation-delay: 2.5s;
+	}
+
+	&.is-not-logo-animated .logos svg path,
+	&.is-not-logo-animated .logos svg rect,
+	&.is-not-logo-animated .logos svg polygon {
+		animation: fillFade;
+		animation-duration: 1.5s;
+		animation-delay: 2.5s;
+	}
+
+	&.is-logo-animated .logos svg path,
+	&.is-logo-animated .logos svg rect,
+	&.is-logo-animated .logos svg polygon {
+		fill: var(--textColour);
+	}
+
+	&.is-logo-animated {
+		background: var(--backgroundColour);
+	}
 
 	&.is-mouse-out {
 		background: var(--offscreenColour);

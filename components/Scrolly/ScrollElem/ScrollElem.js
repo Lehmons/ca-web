@@ -11,20 +11,6 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
 	let shouldUnfix = false;
 
 
-	// useEffect(() => {
-	// 	function onScroll(){
-	// 		const { scrollY } = window;
-	// 		if(fixedPos === undefined){
-	// 			return;
-	// 		}
-	// 		setIsFixed(scrollY >= fixedPos + heightOffset);
-	// 	}
-	// 	window.addEventListener('scroll', onScroll);
-	// 	return () => {
-	// 		window.removeEventListener('scroll', onScroll);
-	// 	}
-	// }, [fixedPos]);
-
 	useScrollPosition(
     ({ prevPos, currPos }) => {
       if (scrollPosition === undefined) {

@@ -21,12 +21,6 @@ const LogosStyles = styled.section`
 		object-fit: contain;
 	}
 
-	svg polygon,
-	svg rect,
-	svg path {
-		fill: var(--textColour);
-	}
-
 `;
 
 export default LogosStyles;

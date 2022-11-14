@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import LogoAnimationStyles from "./LogoAnimation.styled";
 import useWindowSize from '~/lib/useWindowSize';
 import Logos from '../Logos';
+import { useAppStore } from '~/stores/AppStore';
 
 export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
+	const [{ }, { setIsLogoAnimated }] = useAppStore();
+	
+	const onComplete = () => {
+		setIsLogoAnimated(true)
+	};
 
 	const variants = {
 		active: {
@@ -30,6 +36,7 @@ export default function LogoAnimation({ logos }) {
 			initial="initial"
 			animate={'active'}
 			variants={variants}
+			onAnimationComplete={onComplete}
       transition={{
         type: "tween",
         ease: [0.42, 0, 0.58, 1],
