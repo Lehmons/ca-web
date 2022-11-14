@@ -87,9 +87,7 @@ export default function Scrolly({ email, socialMedia}) {
 	useEffect(()=> {
 		setActiveIndex(0);
 		setTimeout(() => {
-			if(window.scrollY < 100){
-				scrollToWithCb({ top: 100, behavior: 'smooth'});
-			}
+			scrollToWithCb({ top: 100, behavior: 'smooth'});
 		}, 1300 + 2000 + 500 + 1500);
 	}, []);
 
