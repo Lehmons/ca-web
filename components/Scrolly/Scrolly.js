@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ScrollyStyles from "./Scrolly.styled";
-import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
+
 import { useAppStore } from '~/stores/AppStore';
 import SimpleBlockContent from "../SimpleBlockContent";
 import useWindowSize from '~/lib/useWindowSize';
