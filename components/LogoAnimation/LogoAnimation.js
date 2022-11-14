@@ -1,22 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LogoAnimationStyles from "./LogoAnimation.styled";
 import useWindowSize from '~/lib/useWindowSize';
 import Logos from '../Logos';
 import { useAppStore } from '~/stores/AppStore';
+import { motion } from 'framer-motion';
+import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 
 export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
-	const [{ }, { setIsLogoAnimated }] = useAppStore();
+	const [{ isLogoAnimated }, { setIsLogoAnimated }] = useAppStore();
 	
 	const onComplete = () => {
 		setTimeout(() => {
-			setIsLogoAnimated(true)
+			setIsLogoAnimated(true);
 		}, 1500);
 	};
 
+	useEffect(()=> {
+		const originalStyle = window.getComputedStyle(document.body).overflow;
+		if (!isLogoAnimated) {
+			//prevent scrolling on mount
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = originalStyle;
+			scrollToWithCb({ top: 100, behavior: 'smooth'});
+		}
+		// re-enable scrolling when component unmounts
+		return () => {
+			document.body.style.overflow = originalStyle;
+		};
+	}, [isLogoAnimated]);
+
 	const variants = {
 		active: {
-			width: "45%",
+			width: viewportW < 768 ? "60%" : "45%",
 			left: "27.5%",
 			display: "block"
 		},
@@ -34,8 +51,9 @@ export default function LogoAnimation({ logos }) {
 
   return (
     <LogoAnimationStyles
-			className="logo-animation"
-			initial="initial"
+			className={`logo-animation ${isLogoAnimated ? 'is-logo-animated' : ''}`}
+    >
+			<motion.wrapper initial="initial"
 			animate={'active'}
 			variants={variants}
 			onAnimationComplete={onComplete}
@@ -44,9 +62,9 @@ export default function LogoAnimation({ logos }) {
         ease: [0.42, 0, 0.58, 1],
         duration: 1.5,
 				delay: 2
-      }}
-    >
-      <Logos logos={logos}/>
+      }}>
+      	<Logos logos={logos}/>
+			</motion.wrapper>
     </LogoAnimationStyles>
   );
 }

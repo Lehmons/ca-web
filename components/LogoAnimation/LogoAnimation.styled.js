@@ -14,6 +14,11 @@ const LogoAnimationStyles = styled(motion.section)`
 	left: 0;
 	z-index: 2;
 	pointer-events: none;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 1.2s ease-in-out;
 
   h1 {
     position: absolute;
@@ -22,6 +27,10 @@ const LogoAnimationStyles = styled(motion.section)`
     transform: translate(-50%, -50%);
     font-size: var(--fontSizeDesktop);
   }
+
+	&.is-logo-animated {
+		opacity: 0;
+	}
 `;
 
 export default LogoAnimationStyles;

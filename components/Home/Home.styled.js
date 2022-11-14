@@ -9,32 +9,16 @@ import { motion } from "framer-motion";
 const HomeStyles = styled(motion.section)`
   width: 100%;
   height: 100%;
-	background: white;
+	background: var(--backgroundColour);
 
-	@keyframes backgroundFade {
-		from {
-			background: white;
-			fill: white;
-		}
-
-		to {
-			fill: var(--backgroundColour);
-			background: var(--backgroundColour);
-		}
-	}
-
-	@keyframes fillFade {
-		from {
-			fill: black !important;
-		}
-
-		to {
-			fill: var(--textColour);
-		}
+	.logo-static svg path,
+	.logo-static .logos svg rect,
+	.logo-static .logos svg polygon{
+		fill: var(--textColour);
 	}
 
 
-	&.is-not-logo-animated {
+	/* &.is-not-logo-animated {
 		animation: backgroundFade;
 		animation-duration: 1.5s;
 		animation-delay: 4s;
@@ -52,13 +36,13 @@ const HomeStyles = styled(motion.section)`
 	&.is-logo-animated .logos svg rect,
 	&.is-logo-animated .logos svg polygon {
 		fill: var(--textColour);
-	}
-
-	&.is-logo-animated {
-		background: var(--backgroundColour);
-	}
+	} */
 
 	&.is-mouse-out {
+		background: var(--offscreenColour);
+	}
+
+	&.is-mouse-out .logo-animation{
 		background: var(--offscreenColour);
 	}
 
