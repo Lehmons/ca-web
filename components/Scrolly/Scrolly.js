@@ -86,9 +86,6 @@ export default function Scrolly({ email, socialMedia}) {
 
 	useEffect(()=> {
 		setActiveIndex(0);
-		setTimeout(() => {
-			scrollToWithCb({ top: 100, behavior: 'smooth'});
-		}, 1300 + 2000 + 500 + 1500);
 	}, []);
 
 	const mobileOrDesktop = (val, valMobile) => {

@@ -9,11 +9,14 @@ import useMouseOutside from '~/lib/useMouseOutside';
 import random from '~/lib/Utils/random';
 import Head from 'next/head';
 import { useAppStore } from '~/stores/AppStore';
+import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 
 export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
 
 export default function Home({ pageStyle, pageVariants, pageTransition, logos, general }) {
 	const ref = useRef();
+	const shouldScroll = useRef(true);
+	const timeout = useRef();
 
 	const randomIndex = logos?.logoset ? random(0, logos?.logoset?.length - 1) : null;
 	
@@ -30,9 +33,18 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	useEffect(()=> {
 		setTimeout(() => {
 			setActiveIndex(0);
+				clearTimeout(timeout.current);
+				timeout.current = setTimeout(() => {
+					if(!shouldScroll.current){
+						clearTimeout(timeout.current);
+						return;
+					}
+					scrollToWithCb({ top: 100, behavior: 'smooth'});
+				}, 1300 + 2000 + 500 + 1500);
 		}, 0);
 		function setLogoAnimatedOnScroll(){
 			setIsLogoAnimated(true);
+			shouldScroll.current = false;
 			window.removeEventListener('scroll', setLogoAnimatedOnScroll);
 		}
 		window.addEventListener('scroll', setLogoAnimatedOnScroll);
@@ -49,10 +61,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const reset = () => {
 		setActiveIndex(0);
 		setIsLogoAnimated(false);
-		window.scrollTo(0, 0);
+		window.scrollTo(0, 0)
+		shouldScroll.current = true;
 		document.getAnimations().forEach((anim) => {
 			anim.cancel();
-      anim.play();
 		});
 	}
 
