@@ -13,7 +13,7 @@ export default function Scrolly({ email, socialMedia}) {
 	const [ fixedPositions, setFixedPositions ] = useState();
 	const [ tops, setTops ] = useState();
 	const ref = useRef();
-	const marginSpace = 400;
+	const marginSpace = viewportH ? 0.557 * viewportH : 400;
 	const [{ }, { setActiveIndex }] = useAppStore();
 
 	const calculate = () => {
@@ -41,7 +41,7 @@ export default function Scrolly({ email, socialMedia}) {
 		// set scroll positions
 		const newScrollPositions = [];
 		heightCounter = 0;
-		const basePosition = viewportH - convertToRemOrPx(20);
+		const basePosition = viewportH - 20;
 		sections.map((section, i) => {
 			if(i === 0){
 				newScrollPositions.push(basePosition);
@@ -87,15 +87,17 @@ export default function Scrolly({ email, socialMedia}) {
 	useEffect(()=> {
 		setActiveIndex(0);
 		setTimeout(() => {
-			scrollToWithCb({ top: 100, behavior: 'smooth'});
+			if(window.scrollY === 0){
+				scrollToWithCb({ top: 100, behavior: 'smooth'});
+			}
 		}, 1300 + 2000 + 500 + 1500);
 	}, []);
 
-	const convertToRemOrPx = val => {
-		if(!viewportW || viewportW <= 1440){
-			return val;
+	const mobileOrDesktop = (val, valMobile) => {
+		if(!viewportW || viewportW <= 768){
+			return valMobile;
 		}
-		return (val / 1440) * viewportW;
+		return val
 	};
 
   return (
@@ -103,10 +105,10 @@ export default function Scrolly({ email, socialMedia}) {
 			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} scrollPosition={scrollPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
 				<p><span>We are a multi-disciplinary<br/> london-based collective.<br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>
 			</ScrollElem>
-			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={convertToRemOrPx(30)} i={2}>
+			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={mobileOrDesktop(35, 20)} i={2}>
 				<p><span>We explore, question,<br/> collaborate and create<span className="hidden">.</span><br/></span><span>Using art direction, design and<br/> spatial forms to deliver emotive<br/> concepts for a diverse audience.</span></p>
 			</ScrollElem>
-			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={convertToRemOrPx(70)} i={3}>
+			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={mobileOrDesktop(70, 45)} i={3}>
 					<p>Our experiences and communities<br/> define our way forward.</p>
 			</ScrollElem>
 			<Fourth >

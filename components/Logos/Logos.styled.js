@@ -16,9 +16,13 @@ const LogosStyles = styled.section`
 	}
 
 	svg {
+		position: relative;
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+		${media.tabletPortraitAndBelow`
+			top: -15px;
+		`}
 	}
 
 `;

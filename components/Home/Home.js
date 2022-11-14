@@ -10,10 +10,11 @@ import random from '~/lib/Utils/random';
 import Head from 'next/head';
 import { useAppStore } from '~/stores/AppStore';
 
+export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
+
 export default function Home({ pageStyle, pageVariants, pageTransition, logos, general }) {
 
 	const randomIndex = logos?.logoset ? random(0, logos?.logoset?.length - 1) : null;
-	const [show, setShow] = useState(false);
 	
 	const email = general?.email;
 	const socialMedia = general?.socialMedia;
@@ -21,13 +22,17 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const isMouseOutside = useMouseOutside();
 	// const isMouseOutside = false;
 
-	const [{ activeIndex, isLogoAnimated }, { setActiveIndex }] = useAppStore();
+	const [{ activeIndex, isLogoAnimated }, { setActiveIndex, setIsLogoAnimated }] = useAppStore();
 
 	useEffect(()=> {
 		setTimeout(() => {
 			setActiveIndex(0);
-			setShow(true);
 		}, 0);
+		function setLogoAnimatedOnScroll(){
+			setIsLogoAnimated(true);
+			window.removeEventListener('scroll', setLogoAnimatedOnScroll);
+		}
+		window.addEventListener('scroll', setLogoAnimatedOnScroll);
 	}, []);
 
   return (
@@ -45,13 +50,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 				<title>{general?.seoTitle}</title>
 				<meta name="description" content={general?.seoDescription}/>
 			</Head>
-			{show && 
 				<>
 					{logos && logos?.logoset && (<LogoAnimation logos={logos?.logoset?.[randomIndex]}/>)}
-					<Spacer/>
 					<Scrolly email={email} socialMedia={socialMedia}/>
 				</>
-			}
     </HomeStyles>
   );
 }
