@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import HomeStyles from "./Home.styled";
 import LogoAnimation from "../LogoAnimation";
 import Spacer from "../Spacer";
@@ -13,6 +13,7 @@ import { useAppStore } from '~/stores/AppStore';
 export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
 
 export default function Home({ pageStyle, pageVariants, pageTransition, logos, general }) {
+	const ref = useRef();
 
 	const randomIndex = logos?.logoset ? random(0, logos?.logoset?.length - 1) : null;
 	
@@ -36,9 +37,11 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	}, []);
 
 	const confirmPageRefresh = () => {
-		setIsLogoAnimated(false);
 		setActiveIndex(0);
+		setIsLogoAnimated(false);
 		window.scrollTo(0, 0);
+		ref.current.classList.remove("is-logo-animated");
+		ref.current.classList.add("is-not-logo-animated");
 	};
 
 	useEffect(() => {
@@ -49,6 +52,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
   return (
     <HomeStyles
       key="#home"
+			ref={ref}
       style={pageStyle}
       initial="initial"
       animate="in"
