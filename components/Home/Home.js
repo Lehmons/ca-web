@@ -49,7 +49,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		setActiveIndex(0);
 		setIsLogoAnimated(false);
 		window.scrollTo(0, 0);
-
+		document.getAnimations().forEach((anim) => {
+			anim.cancel();
+      anim.play();
+		});
 	}
 
 	const handleResize = e => {
@@ -64,11 +67,6 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	};
 
 	useEffect(() => {
-		document.getAnimations().forEach((anim) => {
-
-			anim.cancel();
-      anim.play();
-		});
 		window.addEventListener('beforeunload', confirmPageRefresh);
 		window.addEventListener("resize", handleResize);
 		return () => {
