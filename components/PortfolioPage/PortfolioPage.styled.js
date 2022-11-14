@@ -84,6 +84,17 @@ const PortfolioPageStyles = styled(motion.section)`
 		`}
 	}
 
+	&.has-hidden-pdf .video-container {
+		width: 100%;
+		${media.tabletPortraitAndBelow`
+			height: 100vh;
+		`}
+	}
+
+	&.has-hidden-pdf .video-container mux-player {
+		max-width: 1000px;
+	}
+
 	&.is-mouse-out .video-container{
 		background: var(--offscreenColour);
 	}

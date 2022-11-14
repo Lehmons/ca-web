@@ -11,7 +11,8 @@ export default function PortfolioPage({
   pageTransition,
   portfolio,
   video,
-	downloadLink
+	downloadLink,
+	hidePdf
 }) {
 
 	const isMouseOutside = useMouseOutside();
@@ -25,20 +26,20 @@ export default function PortfolioPage({
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className={`page portfolio ${isMouseOutside ? 'is-mouse-out' : ''}`}
+      className={`page portfolio ${isMouseOutside ? 'is-mouse-out' : ''} ${hidePdf ? 'has-hidden-pdf' : ''}`}
     >
       <Head>
         <title>Commercial Artists</title>
         <meta name="robots" content="noindex" />
       </Head>
       <section className="wrapper">
-				<section className='download-panel'>
+				{!hidePdf && (<section className='download-panel'>
 					{portfolio && (
 						<a href={`${portfolio?.asset?.url}`} download>
 							{downloadLink ||  "Download PDF"}
 						</a>
 					)}
-				</section>
+				</section>)}
 				<section className="video-container">
         {video && (
           <MuxPlayer

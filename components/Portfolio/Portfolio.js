@@ -4,9 +4,11 @@ import { parseCookies, setCookie, destroyCookie } from 'nookies';
 import { useAppStore } from '~/stores/AppStore';
 import PortfolioPage from '../PortfolioPage';
 import PortfolioLogin from '../PortfolioLogin';
+import { useRouter } from 'next/router';
 
 export default function Portfolio({ pageStyle, pageVariants, pageTransition, portfolio, video, password, downloadLink }) {
 	const [{ hasLoggedIn }, { setHasLoggedIn }] = useAppStore();
+	const router = useRouter();
 	
 	useEffect(()=> {
 		const cookies = parseCookies();
@@ -16,6 +18,6 @@ export default function Portfolio({ pageStyle, pageVariants, pageTransition, por
 	}, []);
 
   return(hasLoggedIn ? 
-		<PortfolioPage pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} portfolio={portfolio} video={video} downloadLink={downloadLink}/> : 
+		<PortfolioPage pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} portfolio={portfolio} video={video} downloadLink={downloadLink} hidePdf={router?.asPath.substring(1).includes('pdf=no')}/> : 
 		<PortfolioLogin pageStyle={pageStyle} pageVariants={pageVariants} pageTransition={pageTransition} password={password} />);
 }

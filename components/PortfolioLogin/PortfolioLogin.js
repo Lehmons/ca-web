@@ -39,7 +39,7 @@ export default function PortfolioLogin({ pageStyle, pageVariants, pageTransition
 				<meta name="robots" content="noindex"/>
 			</Head>
       <section>
-				<h1>{router?.asPath.substring(1).replace(/[/-]+/g, ' ')}</h1>
+				<h1>{router?.asPath.substring(1).replace(/[/-]+/g, ' ').replace('\?pdf=no', '')}</h1>
 			</section>
 			<section>
 				<form>
