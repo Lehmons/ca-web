@@ -34,7 +34,7 @@ export default function LogoAnimation({ logos }) {
 	const variants = {
 		active: {
 			width: viewportW < 768 ? "60%" : "45%",
-			left: "27.5%",
+			left: viewportW < 768 ? "20%" : "27.5%",
 			display: "block"
 		},
 		inactive: {
