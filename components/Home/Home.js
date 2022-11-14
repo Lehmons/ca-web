@@ -57,7 +57,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		ref.current.style.webkitAnimation = 'none';
 		void ref.current.offsetWidth;
 		const newone = ref.current.cloneNode(true);
-		ref.current.parentNode.replaceChild(newone, elm);
+		ref.current.parentNode.replaceChild(newone, ref.current);
 		document.body.innerHTML = '';
 		reset();
 	};
