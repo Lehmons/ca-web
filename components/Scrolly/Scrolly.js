@@ -13,7 +13,7 @@ export default function Scrolly({ email, socialMedia}) {
 	const [ fixedPositions, setFixedPositions ] = useState();
 	const [ tops, setTops ] = useState();
 	const ref = useRef();
-	const marginSpace = viewportH ? 0.557 * viewportH : 400;
+	const marginSpace = viewportH ? 0.67 * viewportH : 400;
 	const [{ }, { setActiveIndex }] = useAppStore();
 
 	const calculate = () => {
