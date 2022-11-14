@@ -80,6 +80,15 @@ const HomeStyles = styled(motion.section)`
 		color: var(--offscreenTextColour);
 	}
 
+	/* &.is-resizing {
+		background: var(--offscreenColour);
+	} */
+
+	&.is-resizing p, 
+	&.is-resizing a {
+		display: none;
+	}
+
 `;
 
 export default HomeStyles;

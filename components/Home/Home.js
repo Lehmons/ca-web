@@ -19,6 +19,8 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	
 	const email = general?.email;
 	const socialMedia = general?.socialMedia;
+	const [isResizing, setIsResizing] = useState(false);
+	let resizeTimer = useRef();
 
 	const isMouseOutside = useMouseOutside();
 	// const isMouseOutside = false;
@@ -38,17 +40,35 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 
 	const confirmPageRefresh = () => {
 		document.body.innerHTML = '';
+		reset();
+	};
+
+	const reset = () => {
 		setActiveIndex(0);
 		setIsLogoAnimated(false);
 		window.scrollTo(0, 0);
-
 		ref.current.classList.remove("is-logo-animated");
 		ref.current.classList.add("is-not-logo-animated");
+	}
+
+	const handleResize = e => {
+		clearTimeout(resizeTimer.current);
+		if(window.innerWidth < 768){
+			return;
+		}
+		setIsResizing(true);
+		resizeTimer.current = setTimeout(() => {
+			setIsResizing(false);
+		}, 1200);
 	};
 
 	useEffect(() => {
 		window.addEventListener('beforeunload', confirmPageRefresh);
-		return () => window.removeEventListener('beforeunload', confirmPageRefresh);
+		window.addEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener('beforeunload', confirmPageRefresh);
+			window.addEventListener("resize", handleResize);
+		}
 	}, []);
 
   return (
@@ -61,7 +81,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className={`page home ${isMouseOutside ? 'is-mouse-out' : ''} ${isLogoAnimated ? 'is-logo-animated' : 'is-not-logo-animated'}`}
+      className={`page home ${isMouseOutside ? 'is-mouse-out' : ''} ${isLogoAnimated ? 'is-logo-animated' : 'is-not-logo-animated'} ${isResizing ? 'is-resizing' : ''}`}
     >	
 			<Head>
 				<title>{general?.seoTitle}</title>
