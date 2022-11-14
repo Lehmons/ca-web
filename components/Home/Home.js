@@ -13,7 +13,7 @@ import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 import { motion, animate } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-export const thisIsAnUnusedExport = "this export only exists to disable fast refresh for this file";
+export const unusedExport = "this export only exists to disable fast refresh for this file";
 
 export default function Home({ pageStyle, pageVariants, pageTransition, logos, general }) {
 	const ref = useRef();
@@ -82,8 +82,23 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 			setIsResizing(false);
 		}, 1200);
 	};
+	
+	const restartCSS = () => {
+		setTimeout(() => {
+		ref.current.style.animationName = "none";
+		ref.current.style.animation = "backgroundFade";
+		ref.current.style.background = "white";
+		requestAnimationFrame(() => {
+			setTimeout(() => {
+				ref.current.style.background = "";
+				ref.current.style.animationName = ""
+			}, 0);
+		}, 500);
+});
+	}
 
 	useEffect(() => {
+		restartCSS();
 		window.addEventListener('beforeunload', confirmPageRefresh);
 		window.addEventListener("resize", handleResize);
 		return () => {

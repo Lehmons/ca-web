@@ -7,6 +7,7 @@ import theme from "../components/Styles/Theme";
 import { ThemeProvider } from "styled-components";
 import scrollToWithCb from "../lib/Utils/scrollToWithCb";
 import Settings from "../components/Settings";
+import { unusedExport } from '../components/Home';
 
 // Build initial state
 const initialState = {
