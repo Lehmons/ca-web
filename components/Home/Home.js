@@ -41,6 +41,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const confirmPageRefresh = () => {
 		ref.current.classList.remove("is-logo-animated");
 		ref.current.classList.add("is-not-logo-animated");
+		ref.current.style.webkitAnimation = 'none';
 		document.body.innerHTML = '';
 		reset();
 	};
