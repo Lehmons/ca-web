@@ -54,7 +54,7 @@ export default function LogoAnimation({ logos }) {
 			className={`logo-animation ${isLogoAnimated ? 'is-logo-animated' : ''}`}
     >
 			<motion.wrapper initial="initial"
-			animate={'active'}
+			animate={viewportW ? 'active' : "initial"}
 			variants={variants}
 			onAnimationComplete={onComplete}
       transition={{
