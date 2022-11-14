@@ -37,9 +37,11 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	}, []);
 
 	const confirmPageRefresh = () => {
+		document.body.innerHTML = '';
 		setActiveIndex(0);
 		setIsLogoAnimated(false);
 		window.scrollTo(0, 0);
+
 		ref.current.classList.remove("is-logo-animated");
 		ref.current.classList.add("is-not-logo-animated");
 	};
