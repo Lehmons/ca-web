@@ -36,7 +36,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	}, []);
 
 	const confirmPageRefresh = () => {
-		console.log('yo');
+		setIsLogoAnimated(false);
 		setActiveIndex(0);
 		window.scrollTo(0, 0);
 	};
