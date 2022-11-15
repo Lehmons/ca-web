@@ -32,11 +32,6 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 
 	const [{ activeIndex }, { setActiveIndex }] = useAppStore();
 
-	useEffect(()=> {
-		setTimeout(() => {
-			setActiveIndex(0);
-		}, 0);
-	}, []);
 
 	const confirmPageRefresh = (e) => {
 		void ref.current.offsetWidth;

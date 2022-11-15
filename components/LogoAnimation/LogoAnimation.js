@@ -8,7 +8,12 @@ import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 
 export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
-	const [{ isLogoAnimated }, { setIsLogoAnimated }] = useAppStore();
+	const [{ isLogoAnimated }, { setIsLogoAnimated, setActiveIndex }] = useAppStore();
+
+	const onStart = () => {
+		setIsLogoAnimated(false);
+		setActiveIndex(0);
+	};
 	
 	const onComplete = () => {
 		setTimeout(() => {
@@ -21,8 +26,10 @@ export default function LogoAnimation({ logos }) {
 		if (!isLogoAnimated) {
 			//prevent scrolling on mount
 			document.body.style.overflow = "hidden";
+			document.body.style.position = "relative";
 		} else {
 			document.body.style.overflow = originalStyle;
+			document.body.style.position = '';
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
 		}
 		// re-enable scrolling when component unmounts
@@ -33,8 +40,8 @@ export default function LogoAnimation({ logos }) {
 
 	const variants = {
 		active: {
-			width: viewportW < 768 ? "60%" : "45%",
-			left: viewportW < 768 ? "20%" : "27.5%",
+			width: viewportW < 768 ? "80%" : "45%",
+			left: viewportW < 768 ? "10%" : "27.5%",
 			display: "block"
 		},
 		inactive: {
@@ -56,6 +63,7 @@ export default function LogoAnimation({ logos }) {
 			<motion.wrapper initial="initial"
 			animate={viewportW ? 'active' : "initial"}
 			variants={variants}
+			onAnimationStart={onStart}
 			onAnimationComplete={onComplete}
       transition={{
         type: "tween",
