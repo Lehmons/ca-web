@@ -23,18 +23,29 @@ export default function LogoAnimation({ logos }) {
 
 	useEffect(()=> {
 		const originalStyle = window.getComputedStyle(document.body).overflow;
+		function preventMotion(event)
+		{
+				window.scrollTo(0, 0);
+				event.preventDefault();
+				event.stopPropagation();
+		}
+
 		if (!isLogoAnimated) {
 			//prevent scrolling on mount
 			document.body.style.overflow = "hidden";
 			document.body.style.position = "relative";
+			window.addEventListener("touchmove", preventMotion, false);
 		} else {
 			document.body.style.overflow = originalStyle;
 			document.body.style.position = '';
+			window.removeEventListener("touchmove", preventMotion, false);
 			scrollToWithCb({ top: 100, behavior: 'smooth'});
 		}
 		// re-enable scrolling when component unmounts
 		return () => {
 			document.body.style.overflow = originalStyle;
+			document.body.style.position = '';
+			window.removeEventListener("touchmove", preventMotion, false);
 		};
 	}, [isLogoAnimated]);
 
