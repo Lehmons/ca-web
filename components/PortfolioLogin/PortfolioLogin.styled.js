@@ -17,8 +17,8 @@ const PortfolioLoginStyles = styled(motion.section)`
 	}
 
 	${media.tabletPortraitAndBelow`
-			flex-direction: column-reverse;
-		`}
+		flex-direction: column;
+	`}
 
   & > section {
     height: 100vh;
