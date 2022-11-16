@@ -30,6 +30,10 @@ export default function Scrolly({ email, socialMedia}) {
 			}
 			const closest = getClosestValue(scrollTriggers, scrollY);
 			const newActiveIndex = scrollTriggers.indexOf(closest);
+
+			if(newActiveIndex === 6){
+				return;
+			}
 			setActiveIndex(newActiveIndex);
 
 
@@ -142,9 +146,11 @@ export default function Scrolly({ email, socialMedia}) {
   return (
     <ScrollyStyles ref={ref}>
 			<ScrollElem className="one" fixedPos={fixedPositions?.[0] || null} scrollPosition={scrollPositions?.[0] || null} topPos={tops?.[0] || null} heightOffset={0} i={1}>
-				<p><span>We are a multi-disciplinary<br/> london-based collective<span className="hidden">.</span><br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span></p>
+				<p>
+					<span>We are a multi-disciplinary<br/> london-based collective<span className="hidden">.</span><br/> </span><span>working alongside clients<br/> from initial creative<br/> strategy to final execution.</span>
+				</p>
 			</ScrollElem>
-			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={mobileOrDesktop(35, 20)} i={5}>
+			<ScrollElem className="two" fixedPos={fixedPositions?.[1] || null} scrollPosition={scrollPositions?.[1] || null} topPos={tops?.[1] || null} heightOffset={mobileOrDesktop(35, 20)} i={6}>
 				<p><span>We explore, question,<br/> collaborate and create<span className="hidden">.</span><br/></span><span>Using art direction, design and<br/> spatial forms to deliver emotive<br/> concepts for a diverse audience.</span></p>
 			</ScrollElem>
 			<ScrollElem className="three" fixedPos={fixedPositions?.[2] || null} scrollPosition={scrollPositions?.[2] || null}  topPos={tops?.[2] || null} heightOffset={mobileOrDesktop(70, 45)} i={11}>

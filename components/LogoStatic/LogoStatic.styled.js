@@ -23,8 +23,8 @@ const LogoStaticStyles = styled(motion.section)`
 		left: 27.5%;
 		display: block;
 		${media.tabletPortraitAndBelow`
-			width: 80%;
-			left: 20%;
+			width: 100%;
+			left: 0%;
 		`}
 	}
 `;
