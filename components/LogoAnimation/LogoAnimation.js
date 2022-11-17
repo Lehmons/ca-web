@@ -9,6 +9,7 @@ import scrollToWithCb from '~/lib/Utils/scrollToWithCb';
 export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
 	const [{ isLogoAnimated }, { setIsLogoAnimated, setActiveIndex }] = useAppStore();
+	const [windowSize, setWindowSize] = useState();
 
 	const onStart = () => {
 		setIsLogoAnimated(false);
@@ -18,7 +19,7 @@ export default function LogoAnimation({ logos }) {
 	const onComplete = () => {
 		setTimeout(() => {
 			setIsLogoAnimated(true);
-		}, 1500);
+		}, windowSize < 768 ? 750 : 1500);
 	};
 
 	useEffect(()=> {
@@ -49,10 +50,14 @@ export default function LogoAnimation({ logos }) {
 		};
 	}, [isLogoAnimated]);
 
+	useEffect(()=> {
+	 setWindowSize(window.innerWidth);
+	}, []);
+
 	const variants = {
 		active: {
-			width: viewportW < 768 ? "100%" : "45%",
-			left: viewportW < 768 ? "0%" : "27.5%",
+			width: windowSize < 768 ? "100%" : "45%",
+			left: windowSize < 768 ? "0%" : "27.5%",
 			display: "block"
 		},
 		inactive: {
@@ -72,14 +77,14 @@ export default function LogoAnimation({ logos }) {
 			className={`logo-animation ${isLogoAnimated ? 'is-logo-animated' : ''}`}
     >
 			<motion.wrapper initial="initial"
-			animate={viewportW ? 'active' : "initial"}
+			animate={windowSize ? 'active' : "initial"}
 			variants={variants}
 			onAnimationStart={onStart}
 			onAnimationComplete={onComplete}
       transition={{
         type: "tween",
         ease: [0.42, 0, 0.58, 1],
-        duration: 1.5,
+        duration: windowSize < 768 ? 0.75 : 1.5,
 				delay: 2
       }}>
       	<Logos logos={logos}/>

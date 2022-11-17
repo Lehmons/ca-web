@@ -49,13 +49,10 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const handleResize = e => {
 		e?.preventDefault();
 		clearTimeout(resizeTimer.current);
-		if(window.innerWidth < 768){
-			return;
-		}
 		setIsResizing(true);
 		resizeTimer.current = setTimeout(() => {
 			setIsResizing(false);
-		}, 1200);
+		}, 400);
 	};
 
 
