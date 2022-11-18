@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LogoAnimationStyles from "./LogoAnimation.styled";
 import useWindowSize from '~/lib/useWindowSize';
 import Logos from '../Logos';
