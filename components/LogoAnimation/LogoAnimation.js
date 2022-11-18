@@ -10,6 +10,7 @@ export default function LogoAnimation({ logos }) {
 	const { viewportW } = useWindowSize();
 	const [{ isLogoAnimated }, { setIsLogoAnimated, setActiveIndex }] = useAppStore();
 	const [windowSize, setWindowSize] = useState();
+	const timeout = useRef();
 
 	const onStart = () => {
 		setIsLogoAnimated(false);
@@ -40,7 +41,8 @@ export default function LogoAnimation({ logos }) {
 			document.body.style.overflow = originalStyle;
 			document.body.style.position = '';
 			window.removeEventListener("touchmove", preventMotion, false);
-			setTimeout(() => {
+			clearTimeout(timeout.current);
+			timeout.current = setTimeout(() => {
 				scrollToWithCb({ top: 100, behavior: 'smooth'});
 			}, 1200);
 			

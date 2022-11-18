@@ -21,13 +21,9 @@ export default function Scrolly({ email, socialMedia}) {
 	useScrollPosition(
     ({ prevPos, currPos }) => {
       const { scrollY } = window;
-			const isScrollingUp = prevPos?.y < currPos?.y;
 			if(!scrollPositions?.length || !scrollTriggers){
 				return;
 			}
-			// if(scrollY <= scrollPositions[0] || scrollY === scrollPositions[1] || scrollY >= scrollPositions[scrollPositions?.length - 1]){
-			// 	return;
-			// }
 			if(scrollY === scrollPositions[1]){
 				return;
 			}
@@ -123,6 +119,10 @@ export default function Scrolly({ email, socialMedia}) {
 	};
 
 	useEffect(()=> {
+		setScrollPositions();
+		setScrollTriggers();
+		setActiveIndex(0);
+		window.scrollTo(0, 0);
 		calculate();
 		window.requestAnimationFrame(()=> {
 			setTimeout(() => {
@@ -130,10 +130,6 @@ export default function Scrolly({ email, socialMedia}) {
 			}, 1000);
 		});
 	}, [viewportW, viewportH]);
-
-	useEffect(()=> {
-		setActiveIndex(0);
-	}, []);
 
 	const mobileOrDesktop = (val, valMobile) => {
 		if(!viewportW || viewportW <= 768){

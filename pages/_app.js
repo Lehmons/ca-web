@@ -58,17 +58,6 @@ const MyApp = ({ Component, pageProps, router }) => {
     }
   };
 
-  const resetScrollPosition = () => {
-		setTimeout(() => {
-			window.scrollTo(0, 0);
-		}, 0);
-  };
-
-  const setiOSViewportHeight = () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  };
-
   const onBackNavigation = (e) => {
     // The popstate event is fired each time when the current history entry changes.
     // if (e?.state?.url === "/editorial/[slug]") {
@@ -79,7 +68,6 @@ const MyApp = ({ Component, pageProps, router }) => {
 
   useEffect(() => {
     initRouterListeners();
-    resetScrollPosition();
   }, []);
 
   return (
