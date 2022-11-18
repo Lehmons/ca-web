@@ -90,6 +90,9 @@ export default function Scrolly({ email, socialMedia}) {
 				if(logo === 1){
 					newScrollTriggers.push(newScrollPositions[0]);
 				}
+				else if(logo === 12){
+					newScrollTriggers.push(newScrollPositions[1]);
+				}
 				else {
 					newScrollTriggers.push((logo * gap) + newScrollPositions[0]);
 				}
