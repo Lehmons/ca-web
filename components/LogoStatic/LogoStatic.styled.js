@@ -19,8 +19,8 @@ const LogoStaticStyles = styled(motion.section)`
 	justify-content: center;
 
 	& > .wrapper {
-		width: 45%;
-		left: 27.5%;
+		width: 65%;
+		left: 17.5%;
 		display: block;
 		${media.tabletPortraitAndBelow`
 			width: 100%;

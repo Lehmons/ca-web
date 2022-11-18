@@ -40,7 +40,10 @@ export default function LogoAnimation({ logos }) {
 			document.body.style.overflow = originalStyle;
 			document.body.style.position = '';
 			window.removeEventListener("touchmove", preventMotion, false);
-			scrollToWithCb({ top: 100, behavior: 'smooth'});
+			setTimeout(() => {
+				scrollToWithCb({ top: 100, behavior: 'smooth'});
+			}, 1200);
+			
 		}
 		// re-enable scrolling when component unmounts
 		return () => {
@@ -56,8 +59,8 @@ export default function LogoAnimation({ logos }) {
 
 	const variants = {
 		active: {
-			width: windowSize < 768 ? "100%" : "45%",
-			left: windowSize < 768 ? "0%" : "27.5%",
+			width: windowSize < 768 ? "100%" : "65%",
+			left: windowSize < 768 ? "0%" : "17.5%",
 			display: "block"
 		},
 		inactive: {
