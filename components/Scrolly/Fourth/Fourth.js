@@ -7,7 +7,7 @@ export default function Fourth({ children }) {
 	const [{ activeIndex }] = useAppStore();
 
   return (
-    <FourthStyles className={`four ${activeIndex === 11 ? 'is-active' : ''}`}>
+    <FourthStyles className={`four ${activeIndex === 12 ? 'is-active' : ''}`}>
 				{elements}
     </FourthStyles>
   );

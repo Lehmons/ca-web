@@ -25,15 +25,19 @@ export default function Scrolly({ email, socialMedia}) {
 			if(!scrollPositions?.length || !scrollTriggers){
 				return;
 			}
-			if(scrollY <= scrollPositions[0] || scrollY === scrollPositions[1] || scrollY >= scrollPositions[scrollPositions?.length - 1]){
+			// if(scrollY <= scrollPositions[0] || scrollY === scrollPositions[1] || scrollY >= scrollPositions[scrollPositions?.length - 1]){
+			// 	return;
+			// }
+			if(scrollY === scrollPositions[1]){
 				return;
 			}
 			const closest = getClosestValue(scrollTriggers, scrollY);
 			const newActiveIndex = scrollTriggers.indexOf(closest);
 
-			if(newActiveIndex === 6){
+			if(newActiveIndex < 0 || newActiveIndex === 6){
 				return;
 			}
+
 			setActiveIndex(newActiveIndex);
 
 
@@ -85,21 +89,16 @@ export default function Scrolly({ email, socialMedia}) {
 		const newScrollTriggers = [0];
 		if(newScrollPositions?.length === 3){
 			const gap = Math.abs(newScrollPositions[2] - newScrollPositions[0]) / 12;
-			const logoIndexes = Array.from({length: 11}, (_, i) => i + 1);
+			const logoIndexes = Array.from({length: 12}, (_, i) => i + 1);
 			logoIndexes.forEach(logo => {
 				if(logo === 1){
 					newScrollTriggers.push(newScrollPositions[0]);
 				}
-				else if(logo === 7){
-					newScrollTriggers.push(newScrollPositions[1]);
-				}
-				else if(logo === 11){
-					newScrollTriggers.push(newScrollPositions[2]);
-				} else {
+				else {
 					newScrollTriggers.push((logo * gap) + newScrollPositions[0]);
 				}
 			});
-			if(newScrollTriggers?.length === 12){
+			if(newScrollTriggers?.length === 13){
 				setScrollTriggers(newScrollTriggers);
 			}
 		}
