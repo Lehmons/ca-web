@@ -26,7 +26,6 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 	const socialMedia = general?.socialMedia;
 	const [isResizing, setIsResizing] = useState(false);
 	let resizeTimer = useRef();
-	let previousWidth = useRef();
 
 	const isMouseOutside = useMouseOutside();
 	// const isMouseOutside = false;
@@ -49,7 +48,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 
 	const handleResize = e => {
 		e?.preventDefault();
-		if(previousWidth.current && previousWidth.current < 500){
+		if(window.innerWidth < 500){
 			clearTimeout(resizeTimer.current);
 			setIsResizing(false);
 			return;
@@ -59,7 +58,6 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 		setIsResizing(true);
 		resizeTimer.current = setTimeout(() => {
 			setIsResizing(false);
-			previousWidth.current = window.innerWidth;
 		}, 400);
 	};
 
