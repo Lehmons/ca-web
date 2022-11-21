@@ -11,7 +11,7 @@ export default function SectionFadeIn({ children, index, onInView, className}) {
   const [ref, inView] = useInView({
     /* Optional options */
     threshold: 0,
-    rootMargin: "-30px 0px -30px 0px",
+    rootMargin: "0px 0px 0px 0px",
     triggerOnce: false
   });
 

@@ -90,7 +90,6 @@ export default function Scrolly({ email, socialMedia}) {
 				}
 				else if(logo === 12){
 					newScrollTriggers.push(newScrollPositions[2]);
-					console.log(newScrollPositions[2]);
 				}
 				else {
 					newScrollTriggers.push((logo * gap) + newScrollPositions[0]);
@@ -117,14 +116,16 @@ export default function Scrolly({ email, socialMedia}) {
 			}
 		});
 		setFixedPositions(newFixedPositions);
-
 	};
+
+	useEffect(()=> {
+		window.scrollTo(0, 0);
+	}, []);
 
 	useEffect(()=> {
 		setScrollPositions();
 		setScrollTriggers();
 		setActiveIndex(0);
-		window.scrollTo(0, 0);
 		calculate();
 		window.requestAnimationFrame(()=> {
 			setTimeout(() => {
