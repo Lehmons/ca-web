@@ -73,6 +73,14 @@ const HomeStyles = styled(motion.section)`
 		opacity: 0;
 	}
 
+	.counter {
+		position: fixed;
+		top: 5px;
+		right: 5px;
+		z-index: 3;
+		color: white;
+	}
+
 `;
 
 export default HomeStyles;

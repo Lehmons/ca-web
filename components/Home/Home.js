@@ -88,6 +88,7 @@ export default function Home({ pageStyle, pageVariants, pageTransition, logos, g
 				<meta name="description" content={general?.seoDescription}/>
 			</Head>
 				<>
+					{activeIndex !== undefined && <p className="counter">{activeIndex}</p>}
 					{logos && logos?.logoset && (<LogoAnimation logos={logos?.logoset?.[randomIndex]}/>)}
 					{logos && logos?.logoset && (<LogoStatic logos={logos?.logoset?.[randomIndex]}/>)}
 					<Scrolly email={email} socialMedia={socialMedia}/>

@@ -30,13 +30,11 @@ export default function Scrolly({ email, socialMedia}) {
 			const closest = getClosestValue(scrollTriggers, scrollY);
 			const newActiveIndex = scrollTriggers.indexOf(closest);
 
-			if(newActiveIndex < 0 || newActiveIndex === 6){
+			if(newActiveIndex < 0 || newActiveIndex === 6 || newActiveIndex === 12){
 				return;
 			}
 
 			setActiveIndex(newActiveIndex);
-
-
     },
     [scrollPositions, scrollTriggers]
   );
@@ -91,7 +89,8 @@ export default function Scrolly({ email, socialMedia}) {
 					newScrollTriggers.push(newScrollPositions[0]);
 				}
 				else if(logo === 12){
-					newScrollTriggers.push(newScrollPositions[1]);
+					newScrollTriggers.push(newScrollPositions[2]);
+					console.log(newScrollPositions[2]);
 				}
 				else {
 					newScrollTriggers.push((logo * gap) + newScrollPositions[0]);
@@ -130,7 +129,7 @@ export default function Scrolly({ email, socialMedia}) {
 		window.requestAnimationFrame(()=> {
 			setTimeout(() => {
 				calculate();				
-			}, 1000);
+			}, 1500);
 		});
 	}, [viewportW, viewportH]);
 

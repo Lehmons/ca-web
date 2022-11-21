@@ -36,6 +36,7 @@ export default function ScrollElem({ className, children, fixedPos, heightOffset
 
 	useEffect(()=> {
 	 if(isFixed){
+		console.log(i);
 		setActiveIndex(i)
 	 }
 	}, [isFixed]);
